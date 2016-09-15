@@ -1,1 +1,1 @@
-# ricm5-ecom
+# RICM5 - ECom
