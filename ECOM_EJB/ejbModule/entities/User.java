@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the User database table.
+ * The persistent class for the USER database table.
  * 
  */
 @Entity
@@ -15,7 +15,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private String idUser;
 
 	private byte actived;
 
@@ -29,17 +29,15 @@ public class User implements Serializable {
 
 	private int telephone;
 
-	private String username;
-
 	public User() {
 	}
 
-	public int getId() {
-		return this.id;
+	public String getIdUser() {
+		return this.idUser;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUser(String idUser) {
+		this.idUser = idUser;
 	}
 
 	public byte getActived() {
@@ -88,14 +86,6 @@ public class User implements Serializable {
 
 	public void setTelephone(int telephone) {
 		this.telephone = telephone;
-	}
-
-	public String getUsername() {
-		return this.username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 }

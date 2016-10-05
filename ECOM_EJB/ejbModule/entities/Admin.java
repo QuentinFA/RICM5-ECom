@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the Admin database table.
+ * The persistent class for the ADMIN database table.
  * 
  */
 @Entity
@@ -15,9 +15,7 @@ public class Admin implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-
-	private String admin;
+	private String idAdmin;
 
 	private String firstname;
 
@@ -28,20 +26,12 @@ public class Admin implements Serializable {
 	public Admin() {
 	}
 
-	public int getId() {
-		return this.id;
+	public String getIdAdmin() {
+		return this.idAdmin;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getAdmin() {
-		return this.admin;
-	}
-
-	public void setAdmin(String admin) {
-		this.admin = admin;
+	public void setIdAdmin(String idAdmin) {
+		this.idAdmin = idAdmin;
 	}
 
 	public String getFirstname() {

@@ -4,8 +4,9 @@
 <!--  		<provider>org.hibernate.ejb.HibernatePersistence</provider> -->
 		<jta-data-source>jdbc/_ECOM_Connection__pm</jta-data-source>
 		<class>entities.Admin</class>
+		<class>entities.Category</class>
+		<class>entities.Command</class>
 		<class>entities.Image</class>
-		<class>entities.ImagePK</class>
 		<class>entities.Product</class>
 		<class>entities.User</class>
 		<properties>

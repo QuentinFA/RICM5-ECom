@@ -15,8 +15,8 @@
 
 <table cellpadding="2" cellspacing="2" border="1">
 	<tr>
-		<tr> product_id </tr>
-		<tr> user_id	</tr>
+		<tr> idProduct </tr>
+		<tr> idUser	</tr>
 		<tr> price </tr>
 		<tr> type  </tr>
 		<tr> title </tr>
@@ -24,8 +24,8 @@
 	</tr>
 	<c:forEach var="product" items="${listProduct}">
 	<tr> 
-			<td> ${product.productId}</td>
-			<td> ${product.userId}</td>
+			<td> ${product.idProduct}</td>
+			<td> ${product.idUser}</td>
 			<td> ${product.price}</td>
 			<td> ${product.type}</td>
 			<td> ${product.title}</td>

@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the Image database table.
+ * The persistent class for the IMAGE database table.
  * 
  */
 @Entity
@@ -13,18 +13,50 @@ import javax.persistence.*;
 public class Image implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private ImagePK id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idImage;
+
+	private int idProduct;
+
+	private String idUser;
+
+	@Column(name="img_url")
+	private String imgUrl;
 
 	public Image() {
 	}
 
-	public ImagePK getId() {
-		return this.id;
+	public int getIdImage() {
+		return this.idImage;
 	}
 
-	public void setId(ImagePK id) {
-		this.id = id;
+	public void setIdImage(int idImage) {
+		this.idImage = idImage;
+	}
+
+	public int getIdProduct() {
+		return this.idProduct;
+	}
+
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
+	}
+
+	public String getIdUser() {
+		return this.idUser;
+	}
+
+	public void setIdUser(String idUser) {
+		this.idUser = idUser;
+	}
+
+	public String getImgUrl() {
+		return this.imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 }

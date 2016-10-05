@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the Product database table.
+ * The persistent class for the PRODUCT database table.
  * 
  */
 @Entity
@@ -15,11 +15,12 @@ public class Product implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="product_id")
-	private int productId;
+	private int idProduct;
 
 	@Lob
 	private String description;
+
+	private String idUser;
 
 	private int price;
 
@@ -27,18 +28,15 @@ public class Product implements Serializable {
 
 	private String type;
 
-	@Column(name="user_id")
-	private int userId;
-
 	public Product() {
 	}
 
-	public int getProductId() {
-		return this.productId;
+	public int getIdProduct() {
+		return this.idProduct;
 	}
 
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
 	}
 
 	public String getDescription() {
@@ -47,6 +45,14 @@ public class Product implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getIdUser() {
+		return this.idUser;
+	}
+
+	public void setIdUser(String idUser) {
+		this.idUser = idUser;
 	}
 
 	public int getPrice() {
@@ -71,14 +77,6 @@ public class Product implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public int getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 }
