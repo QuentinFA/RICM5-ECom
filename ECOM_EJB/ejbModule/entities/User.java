@@ -17,7 +17,7 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String idUser;
 
-	private byte actived;
+	private boolean actived;
 
 	private String email;
 
@@ -40,11 +40,11 @@ public class User implements Serializable {
 		this.idUser = idUser;
 	}
 
-	public byte getActived() {
+	public boolean getActived() {
 		return this.actived;
 	}
 
-	public void setActived(byte actived) {
+	public void setActived(boolean actived) {
 		this.actived = actived;
 	}
 
