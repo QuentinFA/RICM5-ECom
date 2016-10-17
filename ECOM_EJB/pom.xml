@@ -5,14 +5,20 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>ejb</packaging>
   
-      <dependencies>  
-		<!-- https://mvnrepositoy.com/artifact/org.glassfish/javax.persistence -->
+     <dependencies>  
+
+		    <dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+			<version>2.1.0</version>
+		    </dependency>
 		<dependency>
-		    <groupId>org.glassfish</groupId>
-		    <artifactId>javax.persistence</artifactId>
-		    <version>10.0-b28</version>
+		    <groupId>javax</groupId>
+		    <artifactId>javaee-web-api</artifactId>
+		    <version>6.0</version>
+		    <scope>provided</scope>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/javax.ejb/javax.ejb-api -->
 		<dependency>
 		    <groupId>javax.ejb</groupId>
