@@ -5,8 +5,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>ejb</packaging>
   
-      <dependencies>
-		<!-- https://mvnrepository.com/artifact/org.glassfish/javax.persistence -->
+      <dependencies>  
+		<!-- https://mvnrepositoy.com/artifact/org.glassfish/javax.persistence -->
 		<dependency>
 		    <groupId>org.glassfish</groupId>
 		    <artifactId>javax.persistence</artifactId>
