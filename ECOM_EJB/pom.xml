@@ -6,19 +6,12 @@
   <packaging>ejb</packaging>
   
       <dependencies>  
-		<!-- https://mvnrepositoy.com/artifact/org.glassfish/javax.persistence -->
-		<dependency>
-		    <groupId>org.glassfish</groupId>
-		    <artifactId>javax.persistence</artifactId>
-		    <version>10.0-b28</version>
-		</dependency>
-		
 
-		<dependency>
-		    <groupId>org.glassfish.extras</groupId>
-		    <artifactId>glassfish-embedded-all</artifactId>
-		    <version>3.1-b07</version>
-		</dependency>
+    <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>javax.persistence</artifactId>
+        <version>2.1.0</version>
+    </dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/javax.ejb/javax.ejb-api -->
