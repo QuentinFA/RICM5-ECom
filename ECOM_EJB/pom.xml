@@ -6,12 +6,11 @@
   <packaging>ejb</packaging>
   
       <dependencies>
-			<dependency>
-			   <groupId>javax.persistence</groupId>
-			   <artifactId>persistence-api</artifactId>
-			   <version>1.0.2</version>
-			   <scope>provided</scope>
-        </dependency>
+        <dependency>
+		    <groupId>org.glassfish</groupId>
+		    <artifactId>javax.persistence</artifactId>
+		    <version>3.0-b29</version>
+		</dependency>
     </dependencies>
     
   <build>
