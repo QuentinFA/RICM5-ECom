@@ -7,6 +7,12 @@
   
        <dependencies>  
 
+		<dependency>
+            <groupId>ECOM</groupId>
+            <artifactId>ECOM_EJB</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
 		    <dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>javax.persistence</artifactId>
