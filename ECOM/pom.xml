@@ -71,15 +71,5 @@
     </plugins>
   </build>
   
-  <distributionManagement>
-    <repository>
-        <id>releases</id>
-        <name>Releases</name>
-    </repository>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>Snapshots</name>
-    </snapshotRepository>
-</distributionManagement>
 
 </project>
