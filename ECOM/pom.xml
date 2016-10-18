@@ -26,7 +26,6 @@
         <version>2.8</version>
                 <configuration>
                     <version>5</version>
-                    <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <modules>
                         <ejbModule>
                             <groupId>ECOM</groupId>
