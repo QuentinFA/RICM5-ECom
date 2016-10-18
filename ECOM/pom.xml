@@ -50,6 +50,7 @@
                 </executions>
                 <configuration>
                     <user>admin</user>
+                    <force>true</force>
                     <glassfishDirectory>/opt/glassfish4/glassfish</glassfishDirectory>
                     <domainDirectory>/opt/glassfish4/glassfish/domains/</domainDirectory>
                     <adminPassword>glassfish</adminPassword>
