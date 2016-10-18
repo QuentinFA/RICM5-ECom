@@ -71,5 +71,12 @@
     </plugins>
   </build>
   
+  <distributionManagement>
+    <repository>
+        <id>releases</id>
+        <name>Releases</name>
+        <url>https://github.com/QuentinFA/RICM5-ECom</url>
+    </repository>
+</distributionManagement>
 
 </project>
