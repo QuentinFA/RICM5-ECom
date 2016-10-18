@@ -10,6 +10,7 @@
             <artifactId>ECOM_EJB</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <type>ejb</type>
+             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>ECOM</groupId>
