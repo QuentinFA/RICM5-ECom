@@ -5,14 +5,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>ear</packaging>
   
-      <dependencies>
-        <dependency>
-            <groupId>ECOM</groupId>
-            <artifactId>ECOM_WebClient</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>
-    </dependencies>
   <build>
     <plugins>
       <plugin>
