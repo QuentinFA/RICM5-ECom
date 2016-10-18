@@ -28,16 +28,6 @@
         <configuration>
           <earSourceDirectory>EarContent</earSourceDirectory>
           <defaultLibBundleDir>lib</defaultLibBundleDir>
-                              <modules>
-                        <ejbModule>
-                            <groupId>ECOM</groupId>
-                            <artifactId>ECOM_EJB</artifactId>
-                        </ejbModule>
-                        <webModule>
-                            <groupId>ECOM</groupId>
-                            <artifactId>ECOM_WebClient</artifactId>
-                        </webModule>
-                    </modules>
         </configuration>
       </plugin>
       
