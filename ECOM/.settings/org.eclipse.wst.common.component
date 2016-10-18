@@ -2,5 +2,8 @@
     <wb-module deploy-name="ECOM-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="ECOM_WebClient-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/ECOM_WebClient/ECOM_WebClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
