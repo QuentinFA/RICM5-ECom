@@ -71,12 +71,10 @@
     </plugins>
   </build>
   
-
-  <distributionManagement>
-    <snapshotRepository>
-    <id>nexus-snapshots</id>
-    <url>http://localhost:8080/nexus/content/repositories/snapshots</url>
-    </snapshotRepository>
+    <distributionManagement>
+  	<repository>
+  		<id>maven-repository</id>
+  		<url>file:///mvnrepo/</url>
+  	</repository>
   </distributionManagement>
-
 </project>
