@@ -48,5 +48,15 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/swagger-annotations-1.5.10.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/swagger-core-1.5.10.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/swagger-jaxrs-1.5.10.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/swagger-models-1.5.10.jar"/>
+	<classpathentry kind="lib" path="/home/nyoce/Desktop/Ecom/Librairies/swagger/swagger-jersey2-jaxrs-1.5.10.jar"/>
+	<classpathentry kind="lib" path="/home/nyoce/Desktop/Ecom/Librairies/swagger/swagger-servlet-1.5.7.jar"/>
+	<classpathentry kind="lib" path="/home/nyoce/Desktop/Ecom/Librairies/swagger/swagger-hibernate-validations-1.5.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.6.3.jar"/>
+	<classpathentry kind="lib" path="/home/nyoce/Desktop/Ecom/Librairies/swagger/reflections-0.9.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang3-3.2.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
