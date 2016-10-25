@@ -7,7 +7,19 @@
 
   
        <dependencies>  
+       <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.7.21</version>
+		</dependency>
        
+       <!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
+			<dependency>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-annotations</artifactId>
+			    <version>1.5.10</version>
+			</dependency>
          <dependency>
             <groupId>ECOM</groupId>
             <artifactId>ECOM_EJB</artifactId>
