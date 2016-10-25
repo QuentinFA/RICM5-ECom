@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.ejb.Remote;
 import javax.persistence.EntityManager;
-
 @Remote
 public abstract class AbstractFacade<T> {
 
