@@ -5,27 +5,66 @@
 	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<script type="text/javascript" language="javascript" src="js/jquery-3.1.0.min.js"></script> 
-	<script type="text/javascript" language="javascript" src="js/script.js"></script> 
+	<link rel="stylesheet" href="css/rating.css">
+	<script src="js/jquery-3.1.0.min.js"></script> 
+	<script src="js/angular.js"></script>
+	<script src="js/script.js"></script>
+	<script src="controller/mainController.js"></script> 
+	<script src="js/rating.js"></script>
 </head>
-<body>
-<nav id="nav"></nav>
-<main class="content">
-	<h1 id="main_title">Annonces : Rhône-Alpes</h1>
-	<div id="anonce_list"></div>
+<body ng-app="myApp">
+<nav class="col-xs-12" id="nav"></nav>
+<main class="col-xs-12" ng-controller="MainCtrl">
+	<section id="searchbox">
+		<div class="content">
+			<table class="col-sm-12">
+				<tr>
+					<form>
+						<td><input class="col-sm-12 search" placeholder="Que recherchez vous ?" ng-model="annonce_title"></td>
+						<td class="col-sm-3">
+							<select class="search">
+								<option selected="selected">Toutes les catégories</option>
+								<option>2</option>
+								<option>3</option>
+							</select>
+						</td>
+						<td class="col-sm-3 last_td"><input class="search search_button" type="submit" value="Rechercher"></button></td>
+					</form>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<section class="content">
+		<h1 id="main_title">Annonces : Rhône-Alpes</h1>
+		<table id="anonce_list">
+			<tr class="annonces" ng-repeat="annonce in annonces | filter:annonce_title">
+				<td class='col-sm-4'><img ng-src='{{annonce.image}}' width='100%'/></td>
+				<td class='col-sm-5' style='margin-left:40px'>
+					<h2><a href='' class='annonce_title'>{{annonce.titre}}</a></h2>
+					<div>Ville : {{annonce.lieu}}</div>
+					<div>Evaluation du vendeur :</div>
+					<span class='stars'>{{annonce.evaluation}}</span>
+				</td>
+				<td class='col-sm-2 last_td'>
+					<div><h2 class='annonce_price'>{{annonce.price}}€</h2></div>
+					<div class="test">
+					</div>
+					
+				</td>
+			</tr>
+		</table>
+	</section>
 </main>
-<footer id="footer"></footer>
+<footer class="col-xs-12" id="footer"></footer>
 <script>
-	 $(document).ready(function(){
+	$(document).ready(function(){
 		$("#nav").load('header.html .content');
 	 	$("#footer").load('footer.html .content');
-	 	$.getJSON('annonces.json', { get_param: 'value' }, function(data) {
-    	$.each(data, function(index, element) {
-	        $('#anonce_list').append("<div> id : "+element.id+" nom : "+element.name+"</div");
-   		});
-});
-		
- });
+	 	$(function () {
+		  $('.stars').stars();
+		});
+			
+ 	});
 
 </script>
 </body>
