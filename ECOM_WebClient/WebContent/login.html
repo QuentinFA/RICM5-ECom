@@ -6,22 +6,22 @@
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="stylesheet" type="text/css" href="css/login.css">
-	<script type="text/javascript" language="javascript" src="js/jquery-3.1.0.min.js"></script>
-	<script type="text/javascript" language="javascript" src="js/script.js"></script>
+	<script type="text/javascript" language="javascript" src="js/jquery-3.1.0.min.js"></script> 
+	<script type="text/javascript" language="javascript" src="js/script.js"></script> 
 </head>
 <body>
 <nav id="nav"></nav>
 <main class="content login">
-	<form action="rest/user/check" method="post">
+	<form action="action_page.php">
 	  <div class="container">
 	    <label><b>Username</b></label>
-	    <input type="text" placeholder="Enter Username" name="name" required>
+	    <input type="text" placeholder="Enter Username" name="uname" required>
 
 	    <label><b>Password</b></label>
-	    <input type="password" placeholder="Enter Password" name="password" required>
-
+	    <input type="password" placeholder="Enter Password" name="psw" required>
+	        
 	    <button type="submit" id="btn_request">Login</button>
-	    <input type="checkbox" checked="checked"> Remember me</input>
+	    <input type="checkbox" checked="checked"> Remember me
 	  </div>
 	</form>
 </main>
@@ -30,7 +30,7 @@
 	 $(document).ready(function(){
 		$("#nav").load('header.html .content');
 	 	$("#footer").load('footer.html .content');
-
+		
  });
 
 </script>

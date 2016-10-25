@@ -1,3 +1,54 @@
 #main_title{
-	color: grey;
+	color: rgb(33,33,33);
+}
+
+
+#anonce_list{
+	border-collapse: collapse;
+}
+.annonces{
+	border-width: 1px 0;
+    border-style: solid;
+    border-color: transparent;
+    border-bottom-color: #e4e4e4;
+}
+
+.search{
+	height: 30px;
+	padding: 0!important;
+}
+select.search{
+	height: 33px;
+}
+
+.search_button{
+	font-size: 13px;
+	color: white;
+	border-radius: 3px;
+	width: 100%;
+	background: -webkit-gradient(linear,left top,left bottom,from(#0079bc),to(#00509d));
+}
+#searchbox > .content{
+	width: 100%;
+}
+
+#searchbox{
+	background-color: #e6e6e6;
+	min-height: 50px;
+	margin: 0 auto!important;
+	display: flex;
+	align-items: center;
+}
+
+.annonce_title{
+	color : rgb(226,189,118);
+}
+
+.annonce_price{
+	color : rgb(226,189,118);
+}
+
+.last_td{
+	float: right;
+	text-align: center;
 }
