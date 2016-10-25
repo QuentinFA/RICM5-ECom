@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="ECOM">
+    <wb-module deploy-name="ECOM-0.0.1-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
-        <dependent-module archiveName="ECOM_EJB.jar" deploy-path="/" handle="module:/resource/ECOM_EJB/ECOM_EJB">
-            <dependent-object/>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ECOM_WebClient.war" deploy-path="/" handle="module:/resource/ECOM_WebClient/ECOM_WebClient">
-            <dependent-object/>
+        <dependent-module archiveName="ECOM_WebClient-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/ECOM_WebClient/ECOM_WebClient">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

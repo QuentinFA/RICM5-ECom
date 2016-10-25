@@ -5,12 +5,17 @@
  */
 package session;
 
-import java.util.List;
+import java.util.List;  
 
 import javax.ejb.Remote;
 import javax.persistence.EntityManager;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 14edeb68d32926fb49e83deb7ea070fa00d7a7ff
 @Remote
-public abstract class AbstractFacade<T> {
+public abstract class AbstractFacade<T> { 
 
     private Class<T> entityClass;
 
@@ -37,7 +42,6 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<T> findAll() {
-    	System.out.println("in findall");
     	
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
