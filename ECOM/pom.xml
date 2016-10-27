@@ -9,7 +9,7 @@
             <groupId>ECOM</groupId>
             <artifactId>ECOM_EJB</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <type>ejb</type>
+            <type>jar</type>
              <scope>provided</scope>
         </dependency>
         <dependency>

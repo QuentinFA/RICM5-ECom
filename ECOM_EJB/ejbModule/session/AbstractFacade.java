@@ -5,7 +5,7 @@
  */
 package session;
 
-import java.util.List;  
+import java.util.List;   
 
 import javax.ejb.Remote;
 import javax.persistence.EntityManager;
