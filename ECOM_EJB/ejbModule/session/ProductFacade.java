@@ -5,11 +5,14 @@
  */
 package session;
 
+import java.util.List;
+
 import entities.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 @Stateless
@@ -22,9 +25,24 @@ public class ProductFacade extends AbstractFacade<Product> {
     protected EntityManager getEntityManager() {
         return em;
     }
-
+ 
     public ProductFacade() {
         super(Product.class);
     }
+
+    public List<Product> findProductByTitle(String title) {
+      Query query = em.createQuery("SELECT p FROM Product p where p.title = '"+title+"' ");
+      return (List<Product>) query.getResultList();
+    }
+    
+    public List<Product> findProductByType(String type) {
+        Query query = em.createQuery("SELECT p FROM Product p where p.type = '"+type+"' ");
+        return (List<Product>) query.getResultList();
+      }
+    
+    public List<Product> findProductPriceRange(int startPrice, int endPrice) {
+        Query query = em.createQuery("SELECT p FROM Product p where p.price >= '"+startPrice+"' AND p.price <= '"+endPrice+"' ");
+        return (List<Product>) query.getResultList();
+      }
     
 }

@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 /**
  * The persistent class for the USER database table.
- * 
  */
 @Entity
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
@@ -14,7 +13,6 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String idUser;
 
 	private boolean actived;

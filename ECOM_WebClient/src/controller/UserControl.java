@@ -1,6 +1,10 @@
 package controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import java.net.URISyntaxException; 
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -12,14 +16,17 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import entities.Product;
 import entities.User;
 import session.ProductFacade;
 import session.UserFacade;
 
 @Path("/user")
+@Api(value="/user", description = "Toutes les requêtes concernant les Utilisateurs")
 public class UserControl {
     @SuppressWarnings("unused")
     @Context
@@ -41,30 +48,133 @@ public class UserControl {
      * @return an instance of String
      */
     @GET
-    @Produces("application/json")
-    public String getJson() {
+    @ApiOperation(
+    value = "Liste de toutes les utilisateurs du site", 
+    notes = "Liste de toutes les utilisateurs du site"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Path("/getAllUsers")
+    public List<User> getAllUsers() {
         // TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of Login
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
-     */
-    @PUT
-    @Consumes("application/json")
-    public void putJson(String content) {
+        // throw new UnsupportedOperationException();
+    	List<User> produits = this.userfacade.findAll();
+    	return produits; 
     }
     
     @POST
+    @ApiOperation(
+    value = "Rechercher les Utilisateur par email", 
+    notes = "Rechercher les Utilisateur par email"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getUserByEmail")
+    public List<User> getProductByType(@FormParam("email") String email) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	List<User> user = this.userfacade.findUserByEmail(email);
+    	return user;
+    }
+    
+    @POST
+    @ApiOperation(
+    value = "Rechercher les Utilisateur par prénom", 
+    notes = "Rechercher les Utilisateur par prénom"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getUserByFirstName")
+    public List<User> getUserByFirstName(@FormParam("firstName") String firstName) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	List<User> user = this.userfacade.findUserByFirstName(firstName);
+    	return user;
+    }
+    
+    @POST
+    @ApiOperation(
+    value = "Rechercher les Utilisateur par Nom de famille", 
+    notes = "Rechercher les Utilisateur par Nom de famille"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getUserByLastName")
+    public List<User> getUserByLastName(@FormParam("lastName") String lastName) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	List<User> user = this.userfacade.findUserByLastName(lastName); 
+    	return user;
+    }
+    
+    @POST
+    @ApiOperation(
+    value = "Rechercher les Utilisateur par Nom de famille", 
+    notes = "Rechercher les Utilisateur par Nom de famille"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getUserByTelephone")
+    public List<User> getUserByTelephone(@FormParam("telephone") String telephone) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	List<User> user = this.userfacade.findUserByTelephone(telephone); 
+    	return user;
+    }
+    
+    @POST
+    @ApiOperation(
+    value = "Retourne tous les utilisateurs qui ont activer leurs compte", 
+    notes = "Retourne tous les utilisateurs qui ont activer leurs compte"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getAllUserActivated")
+    public List<User> getAllUserActivated(@FormParam("activated") boolean activated) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	
+    	return  this.userfacade.getAllUserActivated(activated);
+    }
+    
+    @POST 
+    @ApiOperation(
+            value = "Ajouter un nouvel Utilisateur",
+            notes = "Ajouter un nouvel Utilisateur"
+    )
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/createUser")
+    public Response createUser(	  @FormParam("idUser") String idUser,
+    							  @FormParam("activated") boolean activated, 
+    							  @FormParam("email") String email,
+    							  @FormParam("firstname") String firstname,
+    							  @FormParam("lastname") String lastname,
+    							  @FormParam("password") String password,
+    							  @FormParam("telephone") int telephone ) {
+    	
+    		User nouveau = new User();
+    			nouveau.setIdUser(idUser);
+		    	nouveau.setActived(activated);
+		    	nouveau.setEmail(email);
+		    	nouveau.setFirstname(firstname);
+		    	nouveau.setLastname(lastname);
+		    	nouveau.setPassword(password); 
+		    	nouveau.setTelephone(telephone);
+    	this.userfacade.create(nouveau); 
+    	return Response.status(Response.Status.CREATED).build();
+    }
+    
+
+    @POST
+    @ApiOperation(
+    value = "Permet l'authentification des utilisateurs", 
+    notes = "Permet l'authentification des utilisateurs"
+    )
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
 	@Path("/check")
 	public Response check(
 			@FormParam("name") String name,
 			@FormParam("password") String password) throws URISyntaxException {
-    	
-    	
-//    	System.out.println(name);
 
     	User user = userfacade.find(name);
     	String pass = user.getPassword();

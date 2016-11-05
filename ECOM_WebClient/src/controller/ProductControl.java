@@ -28,8 +28,7 @@ import entities.Product;
 @Path("/product")
 @Api(value="/product", description = "Toutes les requêtes concernant les produits")
 public class ProductControl {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductControl.class.getName());
-
+   
 //    @SuppressWarnings("unused")
     @Context
     private UriInfo context;
@@ -44,15 +43,7 @@ public class ProductControl {
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * Retrieves representation of an instance of ProductControl
-     * @return an instance of String
-     */
-    @GET
-    @Path("/getjson")
-    public String getJSON() {
-        return "{msg: \"Hello World !\"}";
-    }
+
 
     /**
      * Cette fonction renvoie toutes les annonces de la base de donnée.
@@ -72,13 +63,59 @@ public class ProductControl {
     	return produits;
     }
 
+    	
+    @POST
+    @ApiOperation(
+    value = "Rechercher les annonces par titre", 
+    notes = "Rechercher les annonces par titre"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getProductByTitle")
+    public List<Product> getProductByTitle(@FormParam("title") String title) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	List<Product> produits = this.productfacade.findProductByTitle(title);
+    	return produits;
+    }
+    
+    @POST
+    @ApiOperation(
+    value = "Rechercher les annonces par Type", 
+    notes = "Rechercher les annonces par Type"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getProductByType")
+    public List<Product> getProductByType(@FormParam("type") String type) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	List<Product> produits = this.productfacade.findProductByType(type);
+    	return produits;
+    }
+    
+    @POST
+    @ApiOperation(
+    value = "Rechercher les annonces qui sont dans un range de prix", 
+    notes = "Rechercher les annonces qui sont dans un range de prix"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getProductByPriceRange")
+    public List<Product> getProductByPriceRange(@FormParam("startPrice") int startPrice,@FormParam("endPrice") int endPrice) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	List<Product> produits = this.productfacade.findProductPriceRange(startPrice, endPrice);
+    	return produits;
+    }
+    
     /**
      * POST for posting request
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
     
-    @POST
+    @POST 
     @ApiOperation(
             value = "Ajouter un nouveau produit",
             notes = "Ajouter un nouveau produit"
@@ -92,21 +129,15 @@ public class ProductControl {
     							  @FormParam("title") String title,
     							  @FormParam("type") String type) {
     	
-    	LOGGER.info("Annonce créé : derscription: "+description +"\n idUser :"+idUser +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n"); 
+    	Product nouveau = new Product();
+		    	nouveau.setDescription(description);
+		    	nouveau.setIdUser(idUser);
+		    	nouveau.setPrice(price);
+		    	nouveau.setTitle(title);
+		    	nouveau.setType(type);
+    	this.productfacade.create(nouveau); 
     	System.out.println("Annonce créé : derscription: "+description +"\n idUser :"+idUser +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n");
     	return Response.status(Response.Status.CREATED).build();
     }
-    
-    /**
-     * PUT method for updating or creating an instance of ProductControl
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
-     */
-    @PUT
-    @Consumes("application/xml")
-    public void putXml(String content) {
-    }
-    
-    
 
 }

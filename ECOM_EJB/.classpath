@@ -11,12 +11,7 @@
 			<attribute name="owner.project.facets" value="jst.ejb"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="mysql-connector-java-5.1.22-bin.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
-	<classpathentry exported="true" kind="lib" path="gf-client.jar"/>
-	<classpathentry exported="true" kind="lib" path="appserv-rt.jar"/>
-	<classpathentry exported="true" kind="lib" path="javaee.jar"/>
-	<classpathentry exported="true" kind="lib" path="toplink-essentials-2.1-60f.jar"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -34,8 +29,5 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="hibernate-entitymanager-4.1.3.Final.jar"/>
-	<classpathentry kind="lib" path="hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="javax.ejb.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
