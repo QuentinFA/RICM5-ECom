@@ -32,7 +32,7 @@ public class ProductControl {
 //    @SuppressWarnings("unused")
     @Context
     private UriInfo context;
-    
+     
     @EJB
 	private ProductFacade productfacade = new ProductFacade();
 
