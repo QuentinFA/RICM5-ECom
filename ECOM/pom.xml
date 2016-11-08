@@ -38,47 +38,7 @@
 					<outputDirectory>${pathToEar}</outputDirectory>
 				</configuration>
 			</plugin>
-			<!-- Glassfish App Server -->
-			<plugin>
-				<groupId>org.glassfish.maven.plugin</groupId>
-				<artifactId>maven-glassfish-plugin</artifactId>
-				<version>2.1</version>
-				<executions>
-					<execution>
-						<id>gf-undeploy</id>
-						<goals>
-							<goal>undeploy</goal>
-						</goals>
-						<phase>clean</phase>
-					</execution>
-					<execution>
-						<id>gf-deploy</id>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
-				<configuration>
-					<user>admin</user>
-					<force>true</force>
-					<glassfishDirectory>${glassfishDirectoryPath}</glassfishDirectory>
-					<domainDirectory>${domainDirectoryPath}</domainDirectory>
-					<passwordFile>${domainDirectoryPath}/domain1/config/admin-keyfile</passwordFile>
-					<domain>
-						<name>domain1</name>
-						<adminPort>4848</adminPort>
-						<httpPort>8080</httpPort>
-						<httpsPort>8443</httpsPort>
-					</domain>
-					<components>
-						<component>
-							<name>Ecom</name>
-							<artifact>${pathToEar}</artifact>
-						</component>
-					</components>
-				</configuration>
-			</plugin>
+
 
 		</plugins>
 	</build>
