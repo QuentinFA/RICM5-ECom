@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/new_ad.css">
+	<script src="js/jquery-3.1.0.min.js"></script> 
+	<script src="js/angular.js"></script>
+	<script src="js/script.js"></script> 	
+	<script src="controller/newAdController.js"></script> 
+</head>
+<body ng-app="myApp">
+<nav id="nav"></nav>
+<main class="content new_ad" ng-controller="NewAdController">
+	<h1 id="main_title">Déposer une annonce</h1>
+	<form action="action_page.php">
+	 	<div class="container">
+	 		<div class="newAd_line">
+				<label class="col-sm-12"><b>Titre de l'annonce *</b></label>
+				<input class="newAd_default" type="text" name="title" required>
+			</div>
+			<div class="newAd_line">
+				<label class="col-sm-12"><b>Catégorie *</b></label>
+				<select name="category" id="category" class="newAd_default" required>
+					<option value="" disabled selected></option>
+					<option ng-repeat="categorie in categories" value="{{categorie.id}}">{{categorie.name}}</option>
+				</select>
+			</div>
+			<div class="newAd_line">
+				<label class="col-sm-12"><b>Description</b></label>
+				<textarea id="newAd_description" type="text" name="description" maxlength="4000"></textarea>
+			</div>
+			<div class="newAd_line">
+				<input class="validate" type="submit" name="validate">
+			</div>
+	  </div>
+	</form>
+</main>
+<footer id="footer"></footer>
+<script>
+	 $(document).ready(function(){
+		$("#nav").load('header.html .content');
+	 	$("#footer").load('footer.html .content');
+		
+ });
+
+</script>
+</body>
+</html>
