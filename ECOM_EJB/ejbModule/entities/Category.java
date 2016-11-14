@@ -1,6 +1,6 @@
 package entities;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import javax.persistence.*;
 
 
@@ -19,7 +19,7 @@ public class Category implements Serializable {
 
 	private String type;
 
-	public Category() {
+	public Category() { 
 	}
 
 	public int getIdCommand() {
