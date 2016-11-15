@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -15,7 +15,7 @@
 <body ng-app="myApp">
 <nav id="nav"></nav>
 <main class="content new_ad" ng-controller="NewAdController">
-	<h1 id="main_title">DÃ©poser une annonce</h1>
+	<h1 id="main_title">Déposer une annonce</h1>
 	<form action="action_page.php">
 	 	<div class="container">
 	 		<div class="newAd_line">
@@ -23,7 +23,7 @@
 				<input class="newAd_default" type="text" name="title" required>
 			</div>
 			<div class="newAd_line">
-				<label class="col-sm-12"><b>CatÃ©gorie *</b></label>
+				<label class="col-sm-12"><b>Catégorie *</b></label>
 				<select name="category" id="category" class="newAd_default" required>
 					<option value="" disabled selected></option>
 					<option ng-repeat="categorie in categories" value="{{categorie.id}}">{{categorie.name}}</option>
@@ -34,8 +34,8 @@
 				<textarea id="newAd_description" type="text" name="description" maxlength="4000"></textarea>
 			</div>
 	 		<div class="newAd_line">
-				<label class="col-sm-12"><b>Prix *</b></label>
-				<input class="newAd_default" type="number" name="price" required> <span>â‚¬</span>
+				<label class="col-sm-12"><b>Prix  *</b></label>
+				<input class="newAd_default" type="number" name="price" required> <span>€</span>
 			</div>
 	 		<div class="newAd_line">
 	 			<div class="div_upload_picture">
