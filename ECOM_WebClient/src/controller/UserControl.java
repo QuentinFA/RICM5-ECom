@@ -3,7 +3,7 @@ package controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-import java.net.URISyntaxException; 
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,19 +11,15 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import entities.Product;
-import entities.User;
-import session.ProductFacade;
 import session.UserFacade;
+import entities.User;
 
 @Path("/user")
 @Api(value="/user", description = "Toutes les requêtes concernant les Utilisateurs")
@@ -161,6 +157,49 @@ public class UserControl {
 		    	nouveau.setPassword(password); 
 		    	nouveau.setTelephone(telephone);
     	this.userfacade.create(nouveau); 
+    	return Response.status(Response.Status.CREATED).build();
+    }
+    
+    @POST 
+    @ApiOperation(
+            value = "Ajouter un nouvel Utilisateur",
+            notes = "Ajouter un nouvel Utilisateur"
+    )
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/modifyUser")
+    public Response modifyUser(	  @FormParam("idUser") String idUser,
+    							  @FormParam("activated") boolean activated, 
+    							  @FormParam("email") String email,
+    							  @FormParam("firstname") String firstname,
+    							  @FormParam("lastname") String lastname,
+    							  @FormParam("password") String password,
+    							  @FormParam("telephone") int telephone ) {
+    	
+    		User nouveau = (User) userfacade.findUserByEmail(email);
+    			nouveau.setIdUser(idUser);
+		    	nouveau.setActived(activated);
+		    	nouveau.setEmail(email);
+		    	nouveau.setFirstname(firstname);
+		    	nouveau.setLastname(lastname);
+		    	nouveau.setPassword(password); 
+		    	nouveau.setTelephone(telephone);
+    	this.userfacade.edit(nouveau); 
+    	return Response.status(Response.Status.CREATED).build();
+    }
+    
+    @POST 
+    @ApiOperation(
+            value = "Ajouter un nouvel Utilisateur",
+            notes = "Ajouter un nouvel Utilisateur"
+    )
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/deleteUser")
+    public Response deleteUser(	@FormParam("email") String email) {
+    	
+    	User nouveau = (User) userfacade.findUserByEmail(email);
+    	this.userfacade.remove(nouveau); 
     	return Response.status(Response.Status.CREATED).build();
     }
     

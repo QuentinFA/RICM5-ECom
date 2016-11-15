@@ -30,17 +30,20 @@ public class ProductFacade extends AbstractFacade<Product> {
         super(Product.class);
     }
 
-    public List<Product> findProductByTitle(String title) {
+    @SuppressWarnings("unchecked")
+	public List<Product> findProductByTitle(String title) {
       Query query = em.createQuery("SELECT p FROM Product p where p.title = '"+title+"' ");
       return (List<Product>) query.getResultList();
     }
     
-    public List<Product> findProductByType(String type) {
+    @SuppressWarnings("unchecked")
+	public List<Product> findProductByType(String type) {
         Query query = em.createQuery("SELECT p FROM Product p where p.type = '"+type+"' ");
         return (List<Product>) query.getResultList();
       }
     
-    public List<Product> findProductPriceRange(int startPrice, int endPrice) {
+    @SuppressWarnings("unchecked")
+	public List<Product> findProductPriceRange(int startPrice, int endPrice) {
         Query query = em.createQuery("SELECT p FROM Product p where p.price >= '"+startPrice+"' AND p.price <= '"+endPrice+"' ");
         return (List<Product>) query.getResultList();
       }

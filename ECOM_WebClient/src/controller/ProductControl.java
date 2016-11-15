@@ -5,14 +5,11 @@ import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
 
-import session.*;
-
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -20,9 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import session.ProductFacade;
 import entities.Product;
 
 @Path("/product")
@@ -42,9 +37,7 @@ public class ProductControl {
     public ProductControl() {
         // TODO Auto-generated constructor stub
     }
-
-
-
+    
     /**
      * Cette fonction renvoie toutes les annonces de la base de donnée.
      * @return an instance of String
@@ -139,5 +132,47 @@ public class ProductControl {
     	System.out.println("Annonce créé : derscription: "+description +"\n idUser :"+idUser +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n");
     	return Response.status(Response.Status.CREATED).build();
     }
-
+    
+    
+    @POST 
+    @ApiOperation(
+            value = "Modifier un nouveau produit",
+            notes = "Modifier un nouveau produit"
+    )
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/modifyProduct")
+    public Response modifyProduct(@FormParam("description") String description, 
+    							  @FormParam("idUser") String idUser,
+    							  @FormParam("price") int price,
+    							  @FormParam("title") String title,
+    							  @FormParam("type") String type) {
+    	
+    	Product nouveau = (Product) productfacade.findProductByTitle(title);
+		    	nouveau.setDescription(description);
+		    	nouveau.setIdUser(idUser);
+		    	nouveau.setPrice(price);
+		    	nouveau.setTitle(title);
+		    	nouveau.setType(type);
+	
+    	this.productfacade.edit((Product) nouveau);  
+    	System.out.println("Annonce modifié : derscription: "+description +"\n idUser :"+idUser +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n");
+    	return Response.status(Response.Status.CREATED).build();
+    }
+    
+    @POST 
+    @ApiOperation(
+            value = "Modifier un nouveau produit",
+            notes = "Modifier un nouveau produit"
+    )
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/deleteProduct")
+    public Response deleteProduct(@FormParam("title") String title) {
+    	
+    	Product nouveau = (Product) productfacade.findProductByTitle(title);
+    	this.productfacade.remove((Product) nouveau);  
+    	return Response.status(Response.Status.CREATED).build();
+    }
+    
 }
