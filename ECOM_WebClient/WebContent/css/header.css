@@ -1,20 +1,23 @@
 #nav{
-	background-color: #f56b2a;
+	background-color: rgb(226,189,118);
 	height: 50px;
+    padding: 10px 0;
 }
 
-body {
-	margin: 0!important;
-}
 .content_nav{
-    background-color: #f56b2a;
+    padding: 0 20px;
+    background-color: rgb(226,189,118);
 }
 
-#nav .logo-site {
+#nav .logo-site{
    text-decoration: none;
+}
+#nav .logo-site > span{
+   padding:5px;
+   border-radius: 10px;
    color: white;
+   background-color: rgb(33,33,33);
    font-size: 40px;
-   padding-left: 20px;
 }
 
 #nav #head_login{
@@ -28,7 +31,7 @@ body {
 }
 
 #nav #head_login:hover{
-	color: #f56b2a;
+	color: rgb(226,189,118);
 	background-color: white;
 }
 .head_ul{
@@ -48,7 +51,16 @@ body {
 }
 .head_menu li {
 	display: inline-block;
+    border: 2px solid white ;
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
 }
+
+.head_menu li:last-child{
+    border-right: 0px;
+}
+
 .head_menu li a{
 	position: relative;
 	text-decoration: none;	
@@ -65,12 +77,16 @@ body {
     max-width: 1066px;
     min-width: 320px;
     margin: 0 auto;
+    padding: 0 10px;
 }
 
-@media screen and (max-width: 1076px) {
+@media screen and (max-width: 1023px) {
+        #nav{
+        height: 80px;
+    }
 }
 
-@media (max-width:1076px) and (min-width:767px) {
+@media (max-width:1023px) and (min-width:767px) {
     .logo-site{
         display: none;
     }

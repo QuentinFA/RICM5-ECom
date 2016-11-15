@@ -7,7 +7,7 @@
 
 }
 
-ul, li{
+.footer_ul, .footer_ul > li{
 	color: white;
 	list-style-type: none; 
 }
