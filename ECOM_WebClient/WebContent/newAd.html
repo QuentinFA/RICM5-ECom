@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/new_ad.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 	<script src="js/jquery-3.1.0.min.js"></script> 
 	<script src="js/angular.js"></script>
 	<script src="js/script.js"></script> 	
@@ -31,6 +32,17 @@
 			<div class="newAd_line">
 				<label class="col-sm-12"><b>Description</b></label>
 				<textarea id="newAd_description" type="text" name="description" maxlength="4000"></textarea>
+			</div>
+	 		<div class="newAd_line">
+				<label class="col-sm-12"><b>Prix *</b></label>
+				<input class="newAd_default" type="number" name="price" required> <span>€</span>
+			</div>
+	 		<div class="newAd_line">
+	 			<div class="div_upload_picture">
+		 			<input type="file" class="picture upload_picture" accept="image/bmp,image/gif,image/jpeg,image/png,image/x-ms-bmp" name="image0" id="image0">
+		 			<p class="uppercase">Photo principale</p>
+		 			<i class="fa fa-upload fa-2x"></i>
+	 			</div>
 			</div>
 			<div class="newAd_line">
 				<input class="validate" type="submit" name="validate">
