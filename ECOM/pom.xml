@@ -6,7 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>ear</packaging>
 	<properties>
-		<pathToEar>/compile_dir</pathToEar>
+		<pathToEar>/opt/glassfish4/glassfish/domains/autodeploy/</pathToEar>
 		<glassfishDirectoryPath>/opt/glassfish4/glassfish</glassfishDirectoryPath>
 		<domainDirectoryPath>/opt/glassfish4/glassfish/domains</domainDirectoryPath>
 
