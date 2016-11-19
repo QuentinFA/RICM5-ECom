@@ -6,9 +6,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>ear</packaging>
 	<properties>
-		<pathToEar>/Users/zhaozilong/RICM5-ECom</pathToEar>
-		<glassfishDirectoryPath>/Users/zhaozilong/Documents/glassfish4/glassfish</glassfishDirectoryPath>
-		<domainDirectoryPath>/Users/zhaozilong/Documents/glassfish4/glassfish/domains</domainDirectoryPath>
+
+
+		<pathToEar>/common_dir</pathToEar>
+		<glassfishDirectoryPath>/opt/glassfish4/glassfish</glassfishDirectoryPath>
+		<domainDirectoryPath>/opt/glassfish4/glassfish/domains</domainDirectoryPath>
+
 
 	</properties>
 	<dependencies>
