@@ -15,19 +15,19 @@ public class Category implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idCommand;
+	private int idCategory;
 
 	private String type;
 
 	public Category() { 
 	}
 
-	public int getIdCommand() {
-		return this.idCommand;
+	public int getidCategory() {
+		return this.idCategory;
 	}
 
-	public void setIdCommand(int idCommand) {
-		this.idCommand = idCommand;
+	public void setidCategory(int idCategory) {
+		this.idCategory = idCategory;
 	}
 
 	public String getType() {

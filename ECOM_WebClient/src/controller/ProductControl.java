@@ -3,6 +3,7 @@ package controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import java.io.File;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,8 +18,19 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+
+import session.ImageFacade;
 import session.ProductFacade;
+import entities.Image;
 import entities.Product;
+
+import tools.AmazonS3ClientInstance;
 
 @Path("/product")
 @Api(value="/product", description = "Toutes les requêtes concernant les produits")
@@ -30,6 +42,8 @@ public class ProductControl {
      
     @EJB
 	private ProductFacade productfacade = new ProductFacade();
+    @EJB
+    private ImageFacade imagefacade = new ImageFacade();
 
     /**
      * Default constructor. 
@@ -117,19 +131,43 @@ public class ProductControl {
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
     @Path("/createProduct")
     public Response createProduct(@FormParam("description") String description, 
-    							  @FormParam("idUser") String idUser,
+//    							  @FormParam("idUser") String idUser,
     							  @FormParam("price") int price,
     							  @FormParam("title") String title,
-    							  @FormParam("type") String type) {
+    							  @FormParam("type") String type,
+    							  @FormParam("image0") File image0,
+    							  @FormParam("path") String path) {
     	
-    	Product nouveau = new Product();
-		    	nouveau.setDescription(description);
-		    	nouveau.setIdUser(idUser);
-		    	nouveau.setPrice(price);
-		    	nouveau.setTitle(title);
-		    	nouveau.setType(type);
-    	this.productfacade.create(nouveau); 
-    	System.out.println("Annonce créé : derscription: "+description +"\n idUser :"+idUser +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n");
+    	
+		List<Product> produits = this.productfacade.findProductByIdUserAndTitle("zhaozilong", title);
+		if(produits.size() != 0){
+			return Response.status(200)
+					.entity("You have already published an announce with this title before! Try another!")
+					.build();
+		}
+		upLoadImage(path+image0.getName(), image0.getName());
+		
+		Product nouveau = new Product();
+    	nouveau.setDescription(description);
+    	nouveau.setIdUser("zhaozilong");
+    	nouveau.setPrice(price);
+    	nouveau.setTitle(title);
+    	nouveau.setType(type);
+    	this.productfacade.create(nouveau);
+    	List<Product> newProduct = this.productfacade.findProductByIdUserAndTitle("zhaozilong", title);
+    	
+    	
+    	   	
+		Image newImage = new Image();
+		newImage.setIdImage(15);
+		newImage.setIdProduct(newProduct.get(0).getIdProduct());
+		newImage.setIdUser(newProduct.get(0).getIdUser());
+		newImage.setImgUrl("lien vers s3");
+		this.imagefacade.create(newImage);
+    	 
+//    	System.out.println("Annonce créé : derscription: "+description +"\n idUser :"+idUser +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n");
+    	System.out.println("Annonce créé : derscription: "+description +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n image: "+image0.getAbsolutePath());
+    	
     	return Response.status(Response.Status.CREATED).build();
     }
     
@@ -173,6 +211,37 @@ public class ProductControl {
     	Product nouveau = (Product) productfacade.findProductByTitle(title);
     	this.productfacade.remove((Product) nouveau);  
     	return Response.status(Response.Status.CREATED).build();
+    }
+    
+    
+    
+    public void upLoadImage(String file, String key){
+    	System.out.println("uploadimage");
+        AmazonS3 s3client = AmazonS3ClientInstance.getInstance();
+        try {
+            System.out.println("Uploading a new object to S3 from a file\n");
+            //File file = new File(path);
+            s3client.putObject(new PutObjectRequest(
+            		                 "web-ecom", key, new File(file)));
+
+         } catch (AmazonServiceException ase) {
+            System.out.println("Caught an AmazonServiceException, which " +
+            		"means your request made it " +
+                    "to Amazon S3, but was rejected with an error response" +
+                    " for some reason.");
+            System.out.println("Error Message:    " + ase.getMessage());
+            System.out.println("HTTP Status Code: " + ase.getStatusCode());
+            System.out.println("AWS Error Code:   " + ase.getErrorCode());
+            System.out.println("Error Type:       " + ase.getErrorType());
+            System.out.println("Request ID:       " + ase.getRequestId());
+        } catch (AmazonClientException ace) {
+            System.out.println("Caught an AmazonClientException, which " +
+            		"means the client encountered " +
+                    "an internal error while trying to " +
+                    "communicate with S3, " +
+                    "such as not being able to access the network.");
+            System.out.println("Error Message: " + ace.getMessage());
+        }
     }
     
 }
