@@ -34,6 +34,22 @@
 	color: rgb(226,189,118);
 	background-color: white;
 }
+
+#nav #head_logout{
+	margin: 10px;
+	height: 30px;
+	color: white;
+	background-color: transparent;
+	border: 1px solid white;
+	border-radius: 4px;
+	float: right;
+}
+
+#nav #head_logout:hover{
+	color: rgb(226,189,118);
+	background-color: white;
+}
+
 .head_ul{
     position: relative;
     display: inline-block;

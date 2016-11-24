@@ -1,34 +1,75 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/header.css">
-	<link rel="stylesheet" type="text/css" href="css/footer.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" href="css/rating.css">
-	<script src="js/jquery-3.1.0.min.js"></script> 
-	<script src="js/angular.js"></script>
-	<script src="js/script.js"></script>
-	<script src="controller/mainController.js"></script> 
-	<script src="js/rating.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/header.css">
+<link rel="stylesheet" type="text/css" href="css/footer.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" href="css/rating.css">
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/script.js"></script>
+<script src="controller/mainController.js"></script>
+<script src="js/rating.js"></script>
 </head>
+
 <body ng-app="myApp">
-<nav class="col-xs-12" id="nav"></nav>
-<main class="col-xs-12" ng-controller="MainCtrl">
+	<section class="content">
+		<div class="content_nav col-xs-12 col-sm-12">
+			<a href="http://localhost/RECOM5/"
+				class="logo-site col-xs-0 col-sm-2"><span>Utbyte</span></a>
+
+			<button id="head_login" class="col-xs-5 col-sm-2"
+				onclick="location.href = 'login.html'";>Connexion</button>
+			<button id="head_logout" class="col-xs-5 col-sm-2"
+				onclick="location.href = 'LogoutServlet'";>Deconnexion</button>
+			<script type="text/javascript">
+				var allcookies = document.cookie;
+				// Get all the cookies pairs in an array
+				var name = "";
+				var value = "";
+				name = allcookies.split('=')[0];
+				value = allcookies.split('=')[1];
+				var login_button = document.getElementById('head_login');
+				var logout_button = document.getElementById('head_logout');
+
+				if (value == undefined) {
+					login_button.style.visibility = 'visible';
+					logout_button.style.visibility = 'hidden';
+				} else {
+					login_button.style.visibility = 'hidden';
+					logout_button.innerHTML = "Deconnexion "+value;
+					logout_button.style.visibility = 'visible';
+				}
+			</script>
+			<section class="head_ul col-xs-12 col-sm-7">
+				<ul class="head_menu">
+					<li><a href="http://localhost/RECOM5/">Accueil</a></li>
+					<li><a href="newAd">Déposer une annonce</a></li>
+					<li><a href="http://localhost/RECOM5/">Mes annonces</a></li>
+				</ul>
+			</section>
+		</div>
+	</section>
+
+
+
+	<main class="col-xs-12" ng-controller="MainCtrl">
 	<section id="searchbox">
 		<div class="content">
 			<table class="col-sm-12">
 				<tr>
 					<form>
-						<td><input class="col-sm-12 search" placeholder="Que recherchez vous ?" ng-model="annonce_title"></td>
-						<td class="col-sm-3">
-							<select class="search">
+						<td><input class="col-sm-12 search"
+							placeholder="Que recherchez vous ?" ng-model="annonce_title"></td>
+						<td class="col-sm-3"><select class="search">
 								<option selected="selected">Toutes les catégories</option>
 								<option>2</option>
 								<option>3</option>
-							</select>
-						</td>
-						<td class="col-sm-3 last_td"><input class="search search_button" type="submit" value="Rechercher"></button></td>
+						</select></td>
+						<td class="col-sm-3 last_td"><input
+							class="search search_button" type="submit" value="Rechercher">
+							</button></td>
 					</form>
 				</tr>
 			</table>
@@ -37,35 +78,39 @@
 	<section class="content">
 		<h1 id="main_title">Annonces : Rhône-Alpes</h1>
 		<table id="anonce_list">
-			<tr class="annonces" ng-repeat="annonce in annonces | filter:annonce_title">
-				<td class='col-sm-4'><img ng-src='{{annonce.image}}' width='100%'/></td>
-				<td class='col-sm-5' style='margin-left:40px'>
-					<h2><a href='' class='annonce_title'>{{annonce.titre}}</a></h2>
+			<tr class="annonces"
+				ng-repeat="annonce in annonces | filter:annonce_title">
+				<td class='col-sm-4'><img ng-src='{{annonce.image}}'
+					width='100%' /></td>
+				<td class='col-sm-5' style='margin-left: 40px'>
+					<h2>
+						<a href='' class='annonce_title'>{{annonce.titre}}</a>
+					</h2>
 					<div>Ville : {{annonce.lieu}}</div>
-					<div>Evaluation du vendeur :</div>
-					<span class='stars'>{{annonce.evaluation}}</span>
+					<div>Evaluation du vendeur :</div> <span class='stars'>{{annonce.evaluation}}</span>
 				</td>
 				<td class='col-sm-2 last_td'>
-					<div><h2 class='annonce_price'>{{annonce.price}}€</h2></div>
-					<div class="test">
+					<div>
+						<h2 class='annonce_price'>{{annonce.price}}€</h2>
 					</div>
-					
+					<div class="test"></div>
+
 				</td>
 			</tr>
 		</table>
 	</section>
-</main>
-<footer class="col-xs-12" id="footer"></footer>
-<script>
-	$(document).ready(function(){
-		$("#nav").load('header.html .content');
-	 	$("#footer").load('footer.html .content');
-	 	$(function () {
-		  $('.stars').stars();
-		});
-			
- 	});
+	</main>
+	<footer class="col-xs-12" id="footer"></footer>
+	<script>
+		$(document).ready(function() {
+			//	$("#nav").load('header.html .content');
+			$("#footer").load('footer.html .content');
+			$(function() {
+				$('.stars').stars();
+			});
 
-</script>
+		});
+	</script>
+
 </body>
 </html>

@@ -9,16 +9,20 @@
 	<script type="text/javascript" language="javascript" src="js/jquery-3.1.0.min.js"></script> 
 	<script type="text/javascript" language="javascript" src="js/script.js"></script> 
 </head>
+<script type = "text/javascript">
+	console.log(document.cookie);
+</script>
 <body>
+
 <nav id="nav"></nav>
 <main class="content login">
-	<form action="rest/user/check" method = "post">
+	<form action="LoginServlet" method = "post">
 	  <div class="container">
 	    <label><b>Username</b></label>
-	    <input type="text" placeholder="Enter Username" name="name" required>
+	    <input type="text" placeholder="Enter Username" name="user" required>
 
 	    <label><b>Password</b></label>
-	    <input type="password" placeholder="Enter Password" name="password" required>
+	    <input type="password" placeholder="Enter Password" name="pwd" required>
 	        
 	    <button type="submit" id="btn_request">Login</button>
 	    <input type="checkbox" checked="checked"> Remember me
