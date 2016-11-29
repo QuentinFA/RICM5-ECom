@@ -1,6 +1,4 @@
-function scriptLogin(){
-
-	function readCookie(name) {
+function readCookie(name) {
 		var nameEQ = name + "=";
 		var ca = document.cookie.split(';');
 				
@@ -26,4 +24,3 @@ function scriptLogin(){
 		alert($('#head_login').html());
 	}
 
-}
