@@ -16,11 +16,10 @@ function readCookie(name) {
 	var logout_button = document.getElementById('head_logout');
 
 	if (name == undefined || name == "null") {
-		login_button.style.visibility = 'visible';
-		logout_button.style.visibility = 'hidden';
+		$('#head_login').show();
+		$('#head_logout').hide();
 	} else {
 		$('#head_login').hide();
 		$('#head_logout').show();
-		alert($('#head_login').html());
 	}
 
