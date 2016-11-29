@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,19 +19,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-
 import session.ImageFacade;
 import session.ProductFacade;
+import tools.AmazonS3ClientInstance;
+
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+
 import entities.Image;
 import entities.Product;
-
-import tools.AmazonS3ClientInstance;
 
 @Path("/product")
 @Api(value="/product", description = "Toutes les requêtes concernant les produits")
@@ -131,14 +130,14 @@ public class ProductControl {
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
     @Path("/createProduct")
     public Response createProduct(@FormParam("description") String description, 
-//    							  @FormParam("idUser") String idUser,
+    							  @CookieParam(value = "user") String idUser,
     							  @FormParam("price") int price,
     							  @FormParam("title") String title,
     							  @FormParam("type") String type,
     							  @FormParam("image0") File image0,
     							  @FormParam("path") String path) {
     	
-    	
+    	System.out.println("Userrrrrrrrrrrrr " +idUser);
 		List<Product> produits = this.productfacade.findProductByIdUserAndTitle("zhaozilong", title);
 		if(produits.size() != 0){
 			return Response.status(200)

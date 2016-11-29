@@ -1,6 +1,6 @@
 package controller;
 
-import io.swagger.annotations.Api;
+import io.swagger.annotations.Api; 
 import io.swagger.annotations.ApiOperation;
 
 import java.net.URISyntaxException;
@@ -21,6 +21,7 @@ import javax.ws.rs.core.UriInfo;
 import session.UserFacade;
 import session.UserManagement;
 import session.UserManagementInterface;
+import emailManagement.EmailSessionBean;
 import entities.User;
 
 @Path("/user")
@@ -35,6 +36,9 @@ public class UserControl {
 
 	@EJB
 	private UserManagementInterface userManager=new UserManagement();
+	
+	@EJB
+	private EmailSessionBean emailEJB =new EmailSessionBean();
 	
 	
 	
@@ -146,7 +150,7 @@ public class UserControl {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
 	@Path("/createUser")
-	public Response createUser(	  @FormParam("idUser") String idUser,
+	public Response createUser(@FormParam("idUser") String idUser,
 			@FormParam("activated") boolean activated, 
 			@FormParam("email") String email,
 			@FormParam("firstname") String firstname,
@@ -163,6 +167,7 @@ public class UserControl {
 		nouveau.setPassword(password); 
 		nouveau.setTelephone(telephone);
 		this.userfacade.create(nouveau); 
+		emailEJB.sendMail("medewou@gmail.com","test","un test");
 		return Response.status(Response.Status.CREATED).build();
 	}
 

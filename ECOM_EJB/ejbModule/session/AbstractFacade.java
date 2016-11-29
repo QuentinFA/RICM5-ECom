@@ -5,7 +5,7 @@
  */
 package session;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.ejb.Remote;
 import javax.persistence.EntityManager;
@@ -39,7 +39,7 @@ public abstract class AbstractFacade<T> {
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<T> findAll() {
-    	
+    	System.out.println("L4 ENTITYMANAGER "+this.getEntityManager());
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         System.out.println(getEntityManager().createQuery(cq).getResultList().size());
