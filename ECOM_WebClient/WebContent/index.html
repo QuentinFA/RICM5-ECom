@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -56,8 +56,8 @@
 			</script>
 			<section class="head_ul col-xs-12 col-sm-7">
 				<ul class="head_menu">
-					<li><a href="http://localhost/RECOM5/">Accueil</a></li>
-					<li><a href="newAd">DÃ©poser une annonce</a></li>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="newAd.html">Déposer une annonce</a></li>
 					<li><a href="http://localhost/RECOM5/">Mes annonces</a></li>
 				</ul>
 			</section>
@@ -75,7 +75,7 @@
 						<td><input class="col-sm-12 search"
 							placeholder="Que recherchez vous ?" ng-model="annonce_title"></td>
 						<td class="col-sm-3"><select class="search">
-								<option selected="selected">Toutes les catÃ©gories</option>
+								<option selected="selected">Toutes les catégories</option>
 								<option>2</option>
 								<option>3</option>
 						</select></td>
@@ -88,7 +88,7 @@
 		</div>
 	</section>
 	<section class="content">
-		<h1 id="main_title">Annonces : RhÃ´ne-Alpes</h1>
+		<h1 id="main_title">Annonces : Rhône-Alpes</h1>
 		<table id="anonce_list">
 			<tr class="annonces"
 				ng-repeat="annonce in annonces | filter:annonce_title">
@@ -103,7 +103,7 @@
 				</td>
 				<td class='col-sm-2 last_td'>
 					<div>
-						<h2 class='annonce_price'>{{annonce.price}}â‚¬</h2>
+						<h2 class='annonce_price'>{{annonce.price}}€</h2>
 					</div>
 					<div class="test"></div>
 
