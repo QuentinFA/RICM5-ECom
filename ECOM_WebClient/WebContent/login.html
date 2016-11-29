@@ -5,12 +5,27 @@
 	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-		<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<script type="text/javascript" language="javascript" src="js/jquery-3.1.0.min.js"></script> 
 	<script type="text/javascript" language="javascript" src="js/script.js"></script> 
 </head>
 <body>
-<nav id="nav"></nav>
+<header class="col-xs-12" id="nav">
+		<section class="content">
+		<div class="content_nav col-xs-12 col-sm-12">
+			<a href="index.html" class="logo-site col-xs-0 col-sm-2"><span>Utbyte</span></a>
+			<button id="head_login" class="col-xs-5 col-sm-2" onclick="location.href = 'login.html'";>Connexion</button>
+			<button id="head_logout" class="col-xs-5 col-sm-2" onclick="location.href = 'LogoutServlet'";>Déconnexion</button>
+			<section class="head_ul col-xs-12 col-sm-7">
+				<ul class="head_menu">
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="newAd.html">Déposer une annonce</a></li>
+					<li><a href="index.html">Mes annonces</a></li>
+				</ul>
+			</section>
+			</div>
+		</section>
+</header>
 <main class="content login">
 	<form action="LoginServlet" method="post">
 	  <div class="container">
@@ -28,7 +43,6 @@
 <footer id="footer"></footer>
 <script>
 	 $(document).ready(function(){
-		$("#nav").load('header.html .content');
 	 	$("#footer").load('footer.html .content');
 		
  });
