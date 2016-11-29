@@ -1,44 +1,13 @@
 <section class="content">
 	<div class="content_nav col-xs-12 col-sm-12">
 		<a href="http://localhost/RECOM5/" class="logo-site col-xs-0 col-sm-2"><span>Utbyte</span></a>
-
-		<button id="head_login" class="col-xs-5 col-sm-2"
-			onclick="location.href = 'login.html'";>Connexion</button>
-		<button id="head_logout" class="col-xs-5 col-sm-2"
-			onclick="location.href = 'LogoutServlet'";>Deconnexion</button>		
+		<button id="head_login" class="col-xs-5 col-sm-2" onclick="location.href = 'login.html'";>Connexion</button>
 		<section class="head_ul col-xs-12 col-sm-7">
 			<ul class="head_menu">
-				<li><a href="/">Accueil</a></li>
-				<li><a href="newAd.html">Déposer une annonce</a></li>
-				<li><a href="http://localhost/RECOM5/">Mes annonces</a></li>
+				<li><a href="http://localhost/RECOM5/">Accueil</a></li>
+				<li><a href="newAd">Déposer une annonce</a></li>
+				<li><a href="index">Mes annonces</a></li>
 			</ul>
 		</section>
-	</div>
+		</div>
 </section>
-
-<script>
-function readCookie(name) {
-	var nameEQ = name + "=";
-	var ca = document.cookie.split(';');
-	
-	for(var i=0;i < ca.length;i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1,c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-	}
-	return null;
-}
-// Get all the cookies pairs in an array
-var name = readCookie("user");
-console.log(name);
-var login_button = document.getElementById('head_login');
-var logout_button = document.getElementById('head_logout');
-
-if (name == undefined || name == "null") {
-	login_button.style.visibility = 'visible';
-	logout_button.style.visibility = 'hidden';
-} else {
-	login_button.style.visibility = 'hidden';
-	logout_button.style.visibility = 'visible';
-}
-</script>
