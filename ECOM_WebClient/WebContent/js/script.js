@@ -22,7 +22,7 @@ $(document).ready(function(){
 	} else {
 		$('#head_login').hide();
 		$('#head_logout').show();
-		alert('test');
+		alert($('#head_login').html());
 	}
 
 });
