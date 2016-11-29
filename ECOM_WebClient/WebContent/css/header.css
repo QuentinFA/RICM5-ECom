@@ -21,7 +21,7 @@
    font-size: 40px;
 }
 
-#nav #head_login{
+#nav #head_login, #nav #head_logout{
 	margin: 10px;
 	height: 30px;
 	color: white;
@@ -31,7 +31,7 @@
 	float: right;
 }
 
-#nav #head_login:hover{
+#nav #head_login:hover, #nav #head_logout:hover{
 	color: rgb(226,189,118);
 	background-color: white;
 }
