@@ -1,15 +1,15 @@
-
-function readCookie(name) {
-	var nameEQ = name + "=";
-	var ca = document.cookie.split(';');
-			
-	for(var i=0;i < ca.length;i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1,c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+$(document).ready(function(){
+	function readCookie(name) {
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(';');
+				
+		for(var i=0;i < ca.length;i++) {
+			var c = ca[i];
+			while (c.charAt(0)==' ') c = c.substring(1,c.length);
+			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+		}
+		return null;
 	}
-	return null;
-}
 		// Get all the cookies pairs in an array
 	var name = readCookie("user");
 	console.log(name);
@@ -20,7 +20,8 @@ function readCookie(name) {
 		login_button.style.visibility = 'visible';
 		logout_button.style.visibility = 'hidden';
 	} else {
-		login_button.style.visibility = 'hidden';
-		logout_button.innerHTML = "Deconnexion "+value;
-		logout_button.style.visibility = 'visible';
+		$('#head_login').hide();
+		$('#head_logout').show();
 	}
+
+});
