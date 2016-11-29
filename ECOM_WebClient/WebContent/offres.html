@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -11,6 +11,7 @@
 	<script src="js/angular.js"></script>
 	<script src="controller/mainController.js"></script> 
 	<script src="js/rating.js"></script>
+	<meta charset="UTF-8">
 </head>
 <body ng-app="myApp">
 <header class="col-xs-12" id="nav">
@@ -18,11 +19,11 @@
 		<div class="content_nav col-xs-12 col-sm-12">
 			<a href="index.html" class="logo-site col-xs-0 col-sm-2"><span>Utbyte</span></a>
 			<button id="head_login" class="col-xs-5 col-sm-2" onclick="location.href = 'login.html'";>Connexion</button>
-			<button id="head_logout" class="col-xs-5 col-sm-2" onclick="location.href = 'LogoutServlet'";>Déconnexion</button>
+			<button id="head_logout" class="col-xs-5 col-sm-2" onclick="location.href = 'LogoutServlet'";>DÃ©connexion</button>
 			<section class="head_ul col-xs-12 col-sm-7">
 				<ul class="head_menu">
 					<li><a href="index.html">Accueil</a></li>
-					<li><a href="newAd.html">Déposer une annonce</a></li>
+					<li><a href="newAd.html">DÃ©poser une annonce</a></li>
 					<li><a href="index.html">Mes annonces</a></li>
 				</ul>
 			</section>
@@ -38,7 +39,7 @@
 						<td><input class="col-sm-12 search" placeholder="Que recherchez vous ?" ng-model="annonce_title"></td>
 						<td class="col-sm-3">
 							<select class="search">
-								<option selected="selected">Toutes les catégories</option>
+								<option selected="selected">Toutes les catÃ©gories</option>
 								<option>2</option>
 								<option>3</option>
 							</select>
@@ -61,7 +62,7 @@
 					<span class='stars'>{{annonce.evaluation}}</span>
 				</td>
 				<td class='col-sm-2 col-xs-5 last_td'>
-					<div><h2 class='annonce_price'>{{annonce.price}}€</h2></div>
+					<div><h2 class='annonce_price'>{{annonce.price}}â‚¬</h2></div>
 					<div class="test">
 					</div>
 					
@@ -90,8 +91,8 @@
 		    basse_normandie: "Basse Normandie",
 		    pays_de_la_loire: "Pays de la Loire",
 		    bourgogne: "Bourgogne",
-		    franche_comte: "Franche-Comté",
-		    rhone_alpes: "Rhône-Alpes"
+		    franche_comte: "Franche-ComtÃ©",
+		    rhone_alpes: "RhÃ´ne-Alpes"
 		};
 
 		if(getUrlParameter('region') == null || getUrlParameter('region') == true)
