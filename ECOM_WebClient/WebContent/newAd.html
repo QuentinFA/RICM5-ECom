@@ -8,22 +8,37 @@
 	<link rel="stylesheet" type="text/css" href="css/new_ad.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 	<script src="js/jquery-3.1.0.min.js"></script> 
-	<script src="js/angular.js"></script>
-	<script src="js/script.js"></script> 	
+	<script src="js/angular.js"></script>	
 	<script src="controller/newAdController.js"></script> 
+	<meta charset="UTF-8">
 </head>
 <body ng-app="myApp">
-<nav id="nav"></nav>
-<main class="content new_ad" ng-controller="NewAdController">
-	<h1 id="main_title">Déposer une annonce</h1>
-	<form action="action_page.php">
+<header class="col-xs-12" id="nav">
+		<section class="content">
+		<div class="content_nav col-xs-12 col-sm-12">
+			<a href="index.html" class="logo-site col-xs-0 col-sm-2"><span>Utbyte</span></a>
+			<button id="head_login" class="col-xs-5 col-sm-2" onclick="location.href = 'login.html'";>Connexion</button>
+			<button id="head_logout" class="col-xs-5 col-sm-2" onclick="location.href = 'LogoutServlet'";>DÃ©connexion</button>
+			<section class="head_ul col-xs-12 col-sm-7">
+				<ul class="head_menu">
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="newAd.html">DÃ©poser une annonce</a></li>
+					<li><a href="index.html">Mes annonces</a></li>
+				</ul>
+			</section>
+			</div>
+		</section>
+</header>
+<main class="col-xs-12 main_content" ng-controller="NewAdController">
+	<h1 id="main_title">DÃ©poser une annonce</h1>
+	<form action="rest/product/createProduct" method="post">
 	 	<div class="container">
 	 		<div class="newAd_line">
 				<label class="col-sm-12"><b>Titre de l'annonce *</b></label>
 				<input class="newAd_default" type="text" name="title" required>
 			</div>
 			<div class="newAd_line">
-				<label class="col-sm-12"><b>Catégorie *</b></label>
+				<label class="col-sm-12"><b>CatÃ©gorie *</b></label>
 				<select name="category" id="category" class="newAd_default" required>
 					<option value="" disabled selected></option>
 					<option ng-repeat="categorie in categories" value="{{categorie.id}}">{{categorie.name}}</option>
@@ -35,13 +50,14 @@
 			</div>
 	 		<div class="newAd_line">
 				<label class="col-sm-12"><b>Prix *</b></label>
-				<input class="newAd_default" type="number" name="price" required> <span>€</span>
+				<input class="newAd_default" type="number" name="price" required> <span>â‚¬</span>
 			</div>
 	 		<div class="newAd_line">
 	 			<div class="div_upload_picture">
 		 			<input type="file" class="picture upload_picture" accept="image/bmp,image/gif,image/jpeg,image/png,image/x-ms-bmp" name="image0" id="image0">
 		 			<p class="uppercase">Photo principale</p>
 		 			<i class="fa fa-upload fa-2x"></i>
+		 			<input class="newAd_line" type="text" name="path" required>
 	 			</div>
 			</div>
 			<div class="newAd_line">
@@ -50,14 +66,14 @@
 	  </div>
 	</form>
 </main>
-<footer id="footer"></footer>
+<footer class="col-xs-12" id="footer"></footer>
 <script>
-	 $(document).ready(function(){
-		$("#nav").load('header.html .content');
-	 	$("#footer").load('footer.html .content');
+$(document).ready(function(){
+ 	$("#footer").load('footer.html .footer_content');
 		
- });
+});
 
 </script>
+<script src="js/script.js"></script> 
 </body>
 </html>
