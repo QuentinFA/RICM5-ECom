@@ -3,7 +3,7 @@
   <display-name>ECOM_WebClient</display-name>
    <welcome-file-list>
  <!--<welcome-file>redirect.jsp</welcome-file> -->
- 	<welcome-file>login.html</welcome-file> 
+ 	<welcome-file>index.html</welcome-file> 
   </welcome-file-list>    
   <display-name>User Management</display-name>
    <servlet>
