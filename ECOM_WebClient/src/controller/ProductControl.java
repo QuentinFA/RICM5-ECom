@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -29,7 +30,6 @@ import session.ImageFacade;
 import session.ProductFacade;
 import entities.Image;
 import entities.Product;
-
 import tools.AmazonS3ClientInstance;
 
 @Path("/product")
@@ -131,30 +131,31 @@ public class ProductControl {
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
     @Path("/createProduct")
     public Response createProduct(@FormParam("description") String description, 
-//    							  @FormParam("idUser") String idUser,
+    							  @CookieParam(value = "user") String idUser,
     							  @FormParam("price") int price,
     							  @FormParam("title") String title,
-    							  @FormParam("type") String type,
+    							  @FormParam("category") String type,
     							  @FormParam("image0") File image0,
     							  @FormParam("path") String path) {
     	
     	
-		List<Product> produits = this.productfacade.findProductByIdUserAndTitle("zhaozilong", title);
+		List<Product> produits = this.productfacade.findProductByIdUserAndTitle(idUser, title);
 		if(produits.size() != 0){
 			return Response.status(200)
 					.entity("You have already published an announce with this title before! Try another!")
 					.build();
 		}
-		upLoadImage(path+image0.getName(), image0.getName());
+		Float timeNow = System.nanoTime()/1000000000.0f;
+		upLoadImage(path+image0.getName(),timeNow+"_"+idUser+"_"+image0.getName());
 		
 		Product nouveau = new Product();
     	nouveau.setDescription(description);
-    	nouveau.setIdUser("zhaozilong");
+    	nouveau.setIdUser(idUser);
     	nouveau.setPrice(price);
     	nouveau.setTitle(title);
     	nouveau.setType(type);
     	this.productfacade.create(nouveau);
-    	List<Product> newProduct = this.productfacade.findProductByIdUserAndTitle("zhaozilong", title);
+    	List<Product> newProduct = this.productfacade.findProductByIdUserAndTitle(idUser, title);
     	
     	
     	   	
@@ -162,7 +163,7 @@ public class ProductControl {
 		newImage.setIdImage(15);
 		newImage.setIdProduct(newProduct.get(0).getIdProduct());
 		newImage.setIdUser(newProduct.get(0).getIdUser());
-		newImage.setImgUrl("lien vers s3");
+		newImage.setImgUrl("https://s3-eu-west-1.amazonaws.com/web-ecom/"+timeNow+"_"+idUser+"_"+image0.getName());
 		this.imagefacade.create(newImage);
     	 
 //    	System.out.println("Annonce créé : derscription: "+description +"\n idUser :"+idUser +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n");
