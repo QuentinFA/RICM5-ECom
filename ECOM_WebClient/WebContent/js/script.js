@@ -20,6 +20,7 @@ function readCookie(name) {
 		$('#head_logout').hide();
 	} else {
 		$('#head_login').hide();
+		$('#head_logout').html("Bonjour "+name+"\n Déconnexion");
 		$('#head_logout').show();
 	}
 
