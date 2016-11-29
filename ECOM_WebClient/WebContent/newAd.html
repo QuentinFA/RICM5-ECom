@@ -13,10 +13,35 @@
 	<script src="controller/newAdController.js"></script> 
 </head>
 <body ng-app="myApp">
+
+<script>
+	 $(document).ready(function(){
+		$("#nav").load('header.html .content');
+	 	$("#footer").load('footer.html .content');
+		
+ });
+	 
+		function readCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			
+			for(var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		}
+		var name = readCookie("user");
+		document.getElementById('name').innerHTML = name;
+
+</script>
+
+
 <nav id="nav"></nav>
 <main class="content new_ad" ng-controller="NewAdController">
 	<h1 id="main_title">D�poser une annonce</h1>
-	<form action="rest/product/createProduct" method = "post" enctype="multipart/form-data>
+	<form action="rest/product/createProduct" method="post">
 	 	<div class="container">
 	 		<div class="newAd_line">
 				<label class="col-sm-12"><b>Titre de l'annonce *</b></label>
@@ -24,7 +49,7 @@
 			</div>
 			<div class="newAd_line">
 				<label class="col-sm-12"><b>Cat�gorie *</b></label>
-				<select name=type id="category" class="newAd_default" required>
+				<select name="category" id="category" class="newAd_default" required>
 					<option value="" disabled selected></option>
 					<option ng-repeat="categorie in categories" value="{{categorie.id}}">{{categorie.name}}</option>
 				</select>
@@ -41,8 +66,8 @@
 	 			<div class="div_upload_picture">
 		 			<input type="file" class="picture upload_picture" accept="image/bmp,image/gif,image/jpeg,image/png,image/x-ms-bmp" name="image0" id="image0">
 		 			<p class="uppercase">Photo principale</p>
-		 			<p>Target Upload Path : <input type="text" name="path" /></p>
 		 			<i class="fa fa-upload fa-2x"></i>
+		 			<input class="newAd_line" type="text" name="path" required>
 	 			</div>
 			</div>
 			<div class="newAd_line">
@@ -52,13 +77,6 @@
 	</form>
 </main>
 <footer id="footer"></footer>
-<script>
-	 $(document).ready(function(){
-		$("#nav").load('header.html .content');
-	 	$("#footer").load('footer.html .content');
-		
- });
 
-</script>
 </body>
 </html>

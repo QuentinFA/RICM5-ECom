@@ -15,7 +15,7 @@ public class AmazonS3ClientInstance{
 		ClientConfiguration clientConfig;
 		BasicAWSCredentials basicCred;
 		try {
-			basicCred = new BasicAWSCredentials("AKIAJDTOAUAUCVX5ZX5A", "BJ6N4BXt618onMJWcAVgfbYyvy8jUhSo0xZssR4K");
+			basicCred = new BasicAWSCredentials("AKIAIKCAO3X6Y35VXQYA", "jHLw7WRc49tuuJqpbVM/tgnr0p/eZqDu4cCR+ff7");
 			clientConfig = new ClientConfiguration();
 			clientConfig.setMaxConnections(100);
 			clientConfig.setRequestTimeout(1000000);
