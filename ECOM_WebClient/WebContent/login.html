@@ -27,21 +27,22 @@
 			</div>
 		</section>
 </header>
-<main class="content login">
-
-	<form action="LoginServlet" method="post">
-
-	  <div class="container">
-	    <label><b>Username</b></label>
-	    <input type="text" placeholder="Enter Username" name="user" required>
-
-	    <label><b>Password</b></label>
-	    <input type="password" placeholder="Enter Password" name="pwd" required>
-	        
-	    <button type="submit" id="btn_request">Login</button>
-	    <input type="checkbox" checked="checked"> Remember me
-	  </div>
-	</form>
+<main class="col-xs-12 main_content login">
+	<section class="content">
+		<form action="LoginServlet" method="post">
+	
+		  <div class="container">
+		    <label><b>Username</b></label>
+		    <input type="text" placeholder="Enter Username" name="user" required>
+	
+		    <label><b>Password</b></label>
+		    <input type="password" placeholder="Enter Password" name="pwd" required>
+		        
+		    <button type="submit" id="btn_request">Login</button>
+		    <input type="checkbox" checked="checked"> Remember me
+		  </div>
+		</form>
+	</section>
 </main> 
 <footer id="footer"></footer>
 <script>
