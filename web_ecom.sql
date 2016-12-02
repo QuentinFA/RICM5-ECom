@@ -22,7 +22,7 @@
 
 # Dump of table ADMIN
 # ------------------------------------------------------------
-
+USE web_ecom;
 DROP TABLE IF EXISTS `ADMIN`;
 
 CREATE TABLE `ADMIN` (
