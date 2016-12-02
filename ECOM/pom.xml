@@ -8,7 +8,7 @@
 	<properties>
 
 
-		<pathToEar>/common_dir</pathToEar>
+		<pathToEar>/compile_dir</pathToEar>
 		<glassfishDirectoryPath>/opt/glassfish4/glassfish</glassfishDirectoryPath>
 		<domainDirectoryPath>/opt/glassfish4/glassfish/domains</domainDirectoryPath>
 
