@@ -121,14 +121,15 @@ public class ImageControl {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
 	@Path("/modifyImage")
-	public Response modifyImage(@FormParam("idProduct") String idProduct, 
+	public Response modifyImage(@FormParam("idImage") String idImage, 
 			@FormParam("idUser") String idUser,
+			@FormParam("idProduct") int idProduct,
 			@FormParam("url") String imgUrl) {
 
-		Image nouveau = (Image) this.imageFacade.findImageUrlByProduct(idProduct);
-		nouveau.setIdProduct(Integer.valueOf(idProduct));
+		Image nouveau = this.imageFacade.find(idImage);
 		nouveau.setIdUser(idUser);
 		nouveau.setImgUrl(imgUrl);
+		nouveau.setIdProduct(idProduct);
 		this.imageFacade.edit(nouveau); 
 		return Response.status(Response.Status.CREATED).build();
 	}

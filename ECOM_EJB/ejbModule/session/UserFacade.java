@@ -47,6 +47,12 @@ public class UserFacade extends AbstractFacade<User> {
         return (List<User>) query.getResultList();
     }
     
+    @SuppressWarnings("unchecked") 
+	public List<User> findUserByID(String id) {
+        Query query = em.createQuery("SELECT u FROM User u where u.idUser = '"+id+"' ");
+        return (List<User>) query.getResultList();
+    }
+    
     @SuppressWarnings("unchecked")
 	public List<User> findUserByTelephone(String telephone) {
         Query query = em.createQuery("SELECT u FROM User u where u.telephone = '"+telephone+"' ");

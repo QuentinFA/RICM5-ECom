@@ -18,6 +18,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -86,6 +87,21 @@ public class UserControl {
 		// throw new UnsupportedOperationException();
 		List<User> user = this.userfacade.findUserByEmail(email);
 		return user;
+	}
+	
+	@POST
+	@ApiOperation(
+			value = "Rechercher les Utilisateur par ID", 
+			notes = "Rechercher les Utilisateur par ID"
+			)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+	@Path("/getUserByID/{id}")
+	public List<User> getProductByID(@PathParam("id") String id) {
+		// TODO return proper representation object
+		// throw new UnsupportedOperationException();
+		List<User> user = this.userfacade.findUserByID(id);  
+		return user;  
 	}
 
 	@POST
@@ -229,25 +245,30 @@ public class UserControl {
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
 	@Path("/check")
 	public Response check(
+			@Context HttpServletResponse response,
+			@Context HttpServletRequest request,
 			@FormParam("name") String name,
 			@FormParam("password") String password) throws URISyntaxException {
 
 		User user = userfacade.find(name);
-		String pass = user.getPassword();
-
-		if(pass.equals(password)){
-			System.out.println("Connexion");
-			userManager.connexion(user);	
+		if(user != null){
 			
-			userManager.getClient();
-			userManager.getClient();
-			userManager.getClient();
-			userManager.getClient();
-		}
-		else
+			String pass = user.getPassword();
+			
+			if( pass.equals(password)){
+				Cookie loginCookie = new Cookie("user",name);
+				//setting cookie to expiry in 30 mins
+				loginCookie.setMaxAge(30*60);
+				response.addCookie(loginCookie);
+				//response.sendRedirect("#");
+				return Response.status(Response.Status.ACCEPTED).build();
+			}else{
+				return Response.status(Response.Status.FORBIDDEN).build();
+			}
+		} else{
 			return Response.status(Response.Status.FORBIDDEN).build();
+		}
 
-		return Response.status(Response.Status.CREATED).build();
 	}
 
 	@GET

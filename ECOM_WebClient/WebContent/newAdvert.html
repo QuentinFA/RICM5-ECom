@@ -1,0 +1,49 @@
+
+<main class="col-xs-12 main_content">
+	<h1 id="main_title">Déposer une annonce</h1> 
+
+	<form action="rest/product/createProduct" method="post">
+	 	<div class="container"> 
+	 		<div class="newAd_line">
+				<label class="col-sm-12"><b>Titre de l'annonce *</b></label>
+				<input class="newAd_default" type="text" name="title" required>
+			</div>
+			<div class="newAd_line">
+				<label class="col-sm-12"><b>Catégorie *</b></label>
+				<select name="category" id="category" class="newAd_default" required>
+					<option value="" disabled selected></option>
+					<option ng-repeat="categorie in categories" value="{{categorie.id}}">{{categorie.name}}</option>
+				</select>
+			</div>
+			<div class="newAd_line">
+				<label class="col-sm-12"><b>Description</b></label>
+				<textarea id="newAd_description" type="text" name="description" maxlength="4000"></textarea>
+			</div>
+	 		<div class="newAd_line">
+				<label class="col-sm-12"><b>Prix *</b></label>
+				<input class="newAd_default" type="number" name="price" required> <span>€</span>
+			</div>
+	 		<div class="newAd_line">
+	 			<div class="div_upload_picture">
+		 			<input type="file" class="picture upload_picture" accept="image/bmp,image/gif,image/jpeg,image/png,image/x-ms-bmp" name="image0" id="image0">
+		 			<p class="uppercase">Photo principale</p>
+		 			<i class="fa fa-upload fa-2x"></i>
+		 			<input class="newAd_line" type="text" name="path" required>
+	 			</div>
+			</div>
+			<div class="newAd_line">
+	 			<div class="div_upload_picture">
+		 			<input type="file" class="picture upload_picture" accept="image/bmp,image/gif,image/jpeg,image/png,image/x-ms-bmp" name="image1" id="image1">
+		 			<p class="uppercase">Photo principale</p>
+		 			<i class="fa fa-upload fa-2x"></i>
+		 			<input class="newAd_line" type="text" name="path1" required>
+	 			</div>
+			</div>
+
+			<div class="newAd_line">
+				<input class="validate" type="submit" name="validate">
+			</div>
+	  </div>
+		  			
+	</form>
+</main>

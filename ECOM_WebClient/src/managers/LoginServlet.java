@@ -1,6 +1,6 @@
 package managers;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.PrintWriter;
 
 import javax.ejb.EJB;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import entities.User;
 import session.UserFacade;
-
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet{
@@ -42,15 +41,15 @@ public class LoginServlet extends HttpServlet{
 				//setting cookie to expiry in 30 mins
 				loginCookie.setMaxAge(30*60);
 				response.addCookie(loginCookie);
-				response.sendRedirect("/index.html");
+				response.sendRedirect("#");
 			}else{
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("#login");
 				PrintWriter out= response.getWriter();
 				out.println("<font color=red>Le mot de passe est incorrect.</font>");
 				rd.include(request, response);
 			}
 		} else{
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("#login");
 			PrintWriter out= response.getWriter();
 			out.println("<font color=red>Cet Utilisateur n'existe pas.</font>");
 			rd.include(request, response);

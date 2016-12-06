@@ -35,6 +35,11 @@ public class ProductFacade extends AbstractFacade<Product> {
       Query query = em.createQuery("SELECT p FROM Product p where p.title = '"+title+"' ");
       return (List<Product>) query.getResultList();
     }
+    @SuppressWarnings("unchecked")
+	public List<Product> findProductByID(int id) {
+      Query query = em.createQuery("SELECT p FROM Product p where p.idProduct = '"+id+"' ");
+      return (List<Product>) query.getResultList();
+    }
     
     @SuppressWarnings("unchecked")
 	public List<Product> findProductByType(String type) {

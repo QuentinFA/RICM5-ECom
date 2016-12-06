@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -13,6 +14,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -30,8 +32,6 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import entities.Image;
 import entities.Product;
-
-import tools.AmazonS3ClientInstance;
 
 
 @Path("/product")
@@ -65,11 +65,35 @@ public class ProductControl {
     )
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @Path("/getAllproducts")
-    public List<Product> getAllproducts() {
+    public List<produits> getAllproducts() {
         // TODO return proper representation object
         // throw new UnsupportedOperationException();
     	List<Product> produits = this.productfacade.findAll();
-    	return produits;
+    	List<produits> pro =new ArrayList<produits>();
+    	for(Product p:produits){
+    		produits temp =new produits();
+    		temp.setDescription(p.getDescription());
+    		temp.setIdProduct(p.getIdProduct());
+    		temp.setIdUser(p.getIdUser());
+    		temp.setPrice(p.getPrice());
+    		temp.setTitle(p.getTitle());
+    		temp.setType(p.getType());
+    		//temp.setImages(this.imagefacade.findImageUrlByProduct(""+p.getIdProduct())); 
+			List<Image> img = this.imagefacade.findImageUrlByProduct(""+p.getIdProduct());
+			List<Images> Images =new ArrayList<Images>();
+			for(Image tempIm : img){
+				Images imageTemp =new Images();
+				imageTemp.setIdImage(tempIm.getIdImage()); 
+				imageTemp.setIdProduct(tempIm.getIdImage());
+				imageTemp.setIdUser(tempIm.getIdUser());
+				imageTemp.setImgUrl(tempIm.getImgUrl()); 
+				imageTemp.setImgThumbUrl(generateThmbLink(tempIm.getImgUrl()));
+				Images.add(imageTemp);
+			}
+		temp.setImages(Images);
+    		pro.add(temp);
+    	}
+    	return pro; 
     }
 
     	
@@ -86,6 +110,45 @@ public class ProductControl {
         // throw new UnsupportedOperationException();
     	List<Product> produits = this.productfacade.findProductByTitle(title);
     	return produits;
+    }
+    
+    @POST
+    @ApiOperation(
+    value = "Rechercher les annonces par ID", 
+    notes = "Rechercher les annonces par ID"
+    )
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+    @Path("/getProductByID/{id}")
+    public List<produits> getProductByID(@PathParam("id") String id) {
+        // TODO return proper representation object
+        // throw new UnsupportedOperationException();
+    	List<Product> produits = this.productfacade.findProductByID(Integer.valueOf(id));
+    	List<produits> pro =new ArrayList<produits>();
+    	for(Product p: produits){
+    		produits temp =new produits();
+    		temp.setDescription(p.getDescription());
+    		temp.setIdProduct(p.getIdProduct());
+    		temp.setIdUser(p.getIdUser());
+    		temp.setPrice(p.getPrice());
+    		temp.setTitle(p.getTitle());
+    		temp.setType(p.getType());
+    		//temp.setImages(this.imagefacade.findImageUrlByProduct(""+p.getIdProduct()));
+    			List<Image> img = this.imagefacade.findImageUrlByProduct(""+p.getIdProduct());
+    			List<Images> Images =new ArrayList<Images>();
+    			for(Image tempIm : img){
+    				Images imageTemp =new Images();
+    				imageTemp.setIdImage(tempIm.getIdImage()); 
+    				imageTemp.setIdProduct(tempIm.getIdImage());
+    				imageTemp.setIdUser(tempIm.getIdUser());
+    				imageTemp.setImgUrl(tempIm.getImgUrl()); 
+    				imageTemp.setImgThumbUrl(httpToHttps(generateThmbLink(tempIm.getImgUrl())));
+    				Images.add(imageTemp);
+    			}
+    		temp.setImages(Images);
+    		pro.add(temp); 
+    	}
+    	return pro;
     }
     
     @POST
@@ -138,7 +201,9 @@ public class ProductControl {
     							  @FormParam("title") String title,
     							  @FormParam("category") String type,
     							  @FormParam("image0") File image0,
-    							  @FormParam("path") String path) {
+    							  @FormParam("path") String path,
+    							  @FormParam("image1") File image1,
+    							  @FormParam("path1") String path1) {
     	
     	
 		List<Product> produits = this.productfacade.findProductByIdUserAndTitle(idUser, title);
@@ -149,6 +214,9 @@ public class ProductControl {
 		}
 		Float timeNow = System.nanoTime()/1000000000.0f;
 		upLoadImage(path+image0.getName(),timeNow+"_"+idUser+"_"+image0.getName());
+		
+		Float timeNow1 = System.nanoTime()/1000000000.0f;
+		upLoadImage(path1+image1.getName(),timeNow1+"_"+idUser+"_"+image1.getName());
 		
 		Product nouveau = new Product();
     	nouveau.setDescription(description);
@@ -162,11 +230,17 @@ public class ProductControl {
     	
     	   	
 		Image newImage = new Image();
-		newImage.setIdImage(15);
 		newImage.setIdProduct(newProduct.get(0).getIdProduct());
 		newImage.setIdUser(newProduct.get(0).getIdUser());
 		newImage.setImgUrl("https://s3-eu-west-1.amazonaws.com/web-ecom/"+timeNow+"_"+idUser+"_"+image0.getName());
+		
+		Image newImage1 = new Image();
+		newImage1.setIdProduct(newProduct.get(0).getIdProduct());
+		newImage1.setIdUser(newProduct.get(0).getIdUser());
+		newImage1.setImgUrl("https://s3-eu-west-1.amazonaws.com/web-ecom/"+timeNow1+"_"+idUser+"_"+image1.getName());
+
 		this.imagefacade.create(newImage);
+		this.imagefacade.create(newImage1);
     	 
 //    	System.out.println("Annonce créé : derscription: "+description +"\n idUser :"+idUser +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n");
     	System.out.println("Annonce créé : derscription: "+description +"\n price: "+price+" \n title: "+title+" \n type:"+type+" \n image: "+image0.getAbsolutePath());
@@ -247,4 +321,30 @@ public class ProductControl {
         }
     } 
     
+
+public String generateThmbLink(String origin){
+	try{
+		String etat1 = origin.substring(44);
+		String etat2 = origin.substring(0, 34);
+		String etat3 = etat2+".rsz.io/web-ecom/"+etat1+"?width=100";        
+		return etat3;   
+	}
+	catch(StringIndexOutOfBoundsException e){
+
+	}
+	return origin;
+}
+
+public String httpToHttps(String origin){
+	try{
+		String etat1 = origin.substring(5);
+		String etat3 = "http"+etat1;        
+		return etat3;   
+	}
+	catch(StringIndexOutOfBoundsException e){
+
+	}
+	return origin;
+}
+
 }

@@ -1,6 +1,0 @@
-[ 
-	{ "id" : "1", "titre" : "Canapé d'angle", "lieu":"Annecy","price":"350","categorie":"mobilier", "image":"http://www.mobeco.com/upload/salon-DitreItalia-CanapeArtis-2725-i0.jpg", "evaluation":"4.3" },
-	{ "id" : "2", "titre" : "Délégué à donner", "lieu":"Grenoble","price":"0","categorie":"personne", "image":"https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/10394532_895016093892047_3586947107137666200_n.jpg?oh=03f2e43e9f4249c41d1f237786d9fd28&oe=5891863F", "evaluation":"1.7" },
-	{ "id" : "3", "titre" : "Gibson Les Paul", "lieu":"Annecy","price":"1450","categorie":"musique", "image":"http://images.gibson.com.s3.amazonaws.com/Products/Electric-Guitars/2016/USA/Les-Paul-Voodoo-2016/LPSV16JJBC3_MAIN_HERO_01.jpg", "evaluation":"5" }, 
-	{ "id" : "3", "titre" : "Gibson Les Paul", "lieu":"Annecy","price":"1450","categorie":"musique", "image":"http://images.gibson.com.s3.amazonaws.com/Products/Electric-Guitars/2016/USA/Les-Paul-Voodoo-2016/LPSV16JJBC3_MAIN_HERO_01.jpg", "evaluation":"5" }
-]
