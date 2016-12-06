@@ -43,13 +43,13 @@ public class LoginServlet extends HttpServlet{
 				response.addCookie(loginCookie);
 				response.sendRedirect("#");
 			}else{
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("#login");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
 				PrintWriter out= response.getWriter();
 				out.println("<font color=red>Le mot de passe est incorrect.</font>");
 				rd.include(request, response);
 			}
 		} else{
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("#login");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("login.html");
 			PrintWriter out= response.getWriter();
 			out.println("<font color=red>Cet Utilisateur n'existe pas.</font>");
 			rd.include(request, response);
