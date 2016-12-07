@@ -1,4 +1,4 @@
-ï»¿
+
 <main class="col-xs-12 main_content" ng-controller="MainCtrl">
 	<section id="searchbox">
 		<div class="content">
@@ -8,7 +8,7 @@
 						<td><input class="col-sm-12 search" placeholder="Que recherchez vous ?" ng-model="annonce_title"></td>
 						<td class="col-sm-3">
 							<select class="search">
-								<option selected="selected">Toutes les catÃ©gories</option>
+								<option selected="selected">Toutes les catégories</option>
 								<option>2</option>
 								<option>3</option>
 							</select>
@@ -33,7 +33,7 @@
 					<span class='stars'>{{annonce.evaluation}}</span>
 				</td>
 				<td class='col-sm-2 col-xs-5 last_td'>
-					<div><h2 class='annonce_price'>{{annonce.price}}â‚¬</h2></div>
+					<div><h2 class='annonce_price'>{{annonce.price}}€</h2></div>
 					<div class="test">
 					</div>
 					
@@ -62,8 +62,8 @@
 		    basse_normandie: "Basse Normandie",
 		    pays_de_la_loire: "Pays de la Loire",
 		    bourgogne: "Bourgogne",
-		    franche_comte: "Franche-ComtÃ©",
-		    rhone_alpes: "RhÃ´ne-Alpes"
+		    franche_comte: "Franche-Comté",
+		    rhone_alpes: "Rhône-Alpes"
 		};
 
 		if(getUrlParameter('region') == null || getUrlParameter('region') == true)
@@ -73,7 +73,7 @@
 			$('#main_title').html("Annonces : "+region[getUrlParameter('region')]);
 
 	 	$(function () {
-		  $('.stars').stars();
+		 // $('.stars').stars();
 		});
 
  	});
