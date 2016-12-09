@@ -1,0 +1,30 @@
+
+
+input[type=text],input[type=password]{
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display:inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+#emailregistbutton{
+	background-color: #4CAF50;
+	color: white;
+	width: 100%;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+}
+.registbody{
+	padding: 16px;
+}
+.form{
+	width: 50%;
+}
+.logo{
+	position:absolute;
+	left:700px;
+	top:500px;
+}

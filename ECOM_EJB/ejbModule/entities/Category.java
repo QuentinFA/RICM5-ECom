@@ -15,7 +15,7 @@ public class Category implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idCategory;
+	private int idCommand;
 
 	private String type;
 
@@ -23,16 +23,16 @@ public class Category implements Serializable {
 	}
 
 	public int getidCategory() {
-		return this.idCategory;
+		return this.idCommand;
 	}
 
 	public void setidCategory(int idCategory) {
-		this.idCategory = idCategory;
+		this.idCommand = idCategory;
 	}
 
 	public String getType() {
 		return this.type;
-	}
+	} 
 
 	public void setType(String type) {
 		this.type = type;

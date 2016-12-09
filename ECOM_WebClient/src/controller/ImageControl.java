@@ -101,14 +101,9 @@ public class ImageControl {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
 	@Path("/createImage")
-	public Response createImage(@FormParam("idProduct") String idProduct, 
-			@FormParam("idUser") String idUser,
-			@FormParam("url") String imgUrl) {
+	public Response createImage(Image nouveau) {
 
-		Image nouveau = new Image();
-		nouveau.setIdProduct(Integer.valueOf(idProduct));
-		nouveau.setIdUser(idUser);
-		nouveau.setImgUrl(imgUrl);
+
 		this.imageFacade.create(nouveau); 
 		return Response.status(Response.Status.CREATED).build();
 	}

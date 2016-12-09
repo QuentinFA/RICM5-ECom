@@ -1,0 +1,38 @@
+
+<main class="content regist">
+	<form class="form" id="form1">
+		<div class="registbody" ng-controller="registerController">
+
+					<label> <b>Nom</b> </label> 
+			<input type="text" ng-model="user.firstname" placeholder="Entrer votre nom" class="inputEamil"> 
+					<label> <b>Prénoms</b> </label> 
+			<input type="text" ng-model="user.lastname" placeholder="Entrer votre Prénom" class="inputEamil"> 
+			<label> <b>Email</b> </label> 
+			<input type="text" ng-model="user.email" placeholder="Entrer votre numéro de email" class="inputEamil"> 
+			<label>
+					<b>Telephone</b>
+			</label> 
+			<input type="text" ng-model="user.telephone" placeholder="Entrer votre numéro de téléphone" class="inputUserName">
+			<label>
+					<b>Nom d'utilisateur</b>
+			</label> 
+			<input type="text" ng-model="user.username" placeholder="Entrer votre nom d'utilisateur" class="inputUserName">
+			 	<label ng-show="user.password != user.confirm">
+						<b style = 'color : red'>Les mots de passes ne sont pas identiques\n</b>
+				</label> 
+			 <label>
+						<b>Mot de passe</b><br/>
+	</label> <input type="password" ng-model="user.password" placeholder="Entrer votre mot de passe"> <label> <b>Confirmer votre mot de passe</b></label> 
+			<input type="password" ng-model="user.confirm" placeholder="confirmer votre mot de passe"> 
+		<input type="button" id="emailregistbutton" ng-click="update(user)" name="submit" value="s'enregister">
+					
+					<label ng-show="status == 'failed'">
+						<b style = 'color : red'>Nom d'utilisateur déjà utilisé\n</b>
+					</label> 
+					<label ng-show="status == 'failedServeur'">
+						<b style = 'color : red'>Probème de communication avec le serveur\n</b>
+					</label> 
+					
+		</div>
+	</form>
+</main>

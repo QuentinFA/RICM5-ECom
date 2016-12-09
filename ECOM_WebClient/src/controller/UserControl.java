@@ -193,6 +193,21 @@ public class UserControl {
 		return Response.status(Response.Status.CREATED).build();
 	}
 
+	
+	@POST 
+	@ApiOperation(
+			value = "Ajouter un nouvel Utilisateur",
+			notes = "Ajouter un nouvel Utilisateur"
+			)
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Path("/createUserByJSON")
+	public Response createUser( User nouveau) throws Exception{
+
+		this.userfacade.create(nouveau); 
+		emailEJB.sendMail("medewou@gmail.com","test","un test");
+		return Response.status(Response.Status.CREATED).build();
+	}
+	
 	@POST 
 	@ApiOperation(
 			value = "Ajouter un nouvel Utilisateur",
