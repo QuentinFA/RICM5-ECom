@@ -189,7 +189,7 @@ public class UserControl {
 		nouveau.setPassword(password); 
 		nouveau.setTelephone(telephone);
 		this.userfacade.create(nouveau); 
-		emailEJB.sendMail("medewou@gmail.com","test","un test");
+		emailEJB.sendMail(email,"test","un test");
 		return Response.status(Response.Status.CREATED).build();
 	}
 
@@ -204,7 +204,7 @@ public class UserControl {
 	public Response createUser( User nouveau) throws Exception{
 
 		this.userfacade.create(nouveau); 
-		emailEJB.sendMail("medewou@gmail.com","test","un test");
+		emailEJB.sendMail(nouveau.getEmail(),"test","un test");
 		return Response.status(Response.Status.CREATED).build();
 	}
 	

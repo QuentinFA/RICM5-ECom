@@ -69,10 +69,10 @@ public class EmailSessionBean {
 		    //message.setText(body);
 		    Multipart multipart = new MimeMultipart("alternative");
 		    MimeBodyPart textPart = new MimeBodyPart();
-		    String textContent = "Hi, Nice to meet you!";
+		    String textContent = "Bienvenue sur UtByte!";
 		    textPart.setText(textContent);
 		    MimeBodyPart htmlPart = new MimeBodyPart();
-		    String htmlContent = "<html><h1>Hi</h1><p>Nice to meet you!</p></html>";
+		    String htmlContent = "<html><h1>Hi</h1><p>Vous vous êtes inscrit sur le meilleur site de ventre entre particulier au monde,Merci. <br/> On espère que vous allez faire de bonnes affaires grâce à ce site.</p></html>";
 		    htmlPart.setContent(htmlContent, "text/html");
 		    multipart.addBodyPart(textPart);
 		    multipart.addBodyPart(htmlPart);
