@@ -8,7 +8,7 @@
 						<td><input class="col-sm-12 search" placeholder="Que recherchez vous ?" ng-model="annonce_title"></td>
 						<td class="col-sm-3">
 							<select class="search">
-								<option selected="selected">Toutes les catégories</option>
+								<option selected="selected">Toutes les catÃ©gories</option>
 								<option>2</option>
 								<option>3</option>
 							</select>
@@ -33,17 +33,17 @@
 					<span class='stars'>{{annonce.evaluation}}</span>
 				</td>
 				<td class='col-sm-2 col-xs-5 last_td'>
-					<div><h2 class='annonce_price'>{{annonce.price}}€</h2></div>
+					<div><h2 class='annonce_price'>{{annonce.price}}â‚¬</h2></div>
 					<div class="test">
 					</div>
 					
 				</td>
 			</tr>
 		</table>
-	<ul>
+<!-- 	<ul>
 		<li class="index_pagination"> Page : </li>
     	<li class="index_pagination"  ng-repeat="i in getNumber(nbPages) track by $index">{{$index+1}}</li>
-	</ul>
+	</ul> -->
 	</section>
 </main>
 
@@ -62,8 +62,8 @@
 		    basse_normandie: "Basse Normandie",
 		    pays_de_la_loire: "Pays de la Loire",
 		    bourgogne: "Bourgogne",
-		    franche_comte: "Franche-Comté",
-		    rhone_alpes: "Rhône-Alpes"
+		    franche_comte: "Franche-Comtï¿½",
+		    rhone_alpes: "Rhï¿½ne-Alpes"
 		};
 
 		if(getUrlParameter('region') == null || getUrlParameter('region') == true)

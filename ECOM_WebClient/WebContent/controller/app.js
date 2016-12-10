@@ -132,7 +132,7 @@ scotchApp.controller('NewAdController', function($scope, $http,$location,$cookie
 								"idImage": 0,
 								"idProduct" : data.data.idProduct,
 								"idUser" : user,
-								"imgUrl" : "https://s3-eu-west-1.amazonaws.com/web-ecom/"+$scope.PictureNames[i]
+								"imgUrl" : url
 							}
 					};
 					$http(reqIm).then(function (data2, status, headers, config) {
@@ -278,6 +278,10 @@ scotchApp.controller('detailController', function($scope, $routeParams, $http) {
 	$scope.IdAdvert = $routeParams.IdAdvert;	
 	$scope.annonce;
 	$scope.vendeur;
+	$scope.url;
+	$scope.changeImage = function(url) {
+		$scope.url = url;
+	};
 	$scope.transform = function(origin){
 		origin = origin.imgurl;
 		var etat1 = origin.split("/web-ecom/");
@@ -292,6 +296,7 @@ scotchApp.controller('detailController', function($scope, $routeParams, $http) {
 	$http(req).then(function (data, status, headers, config) {
 		// success function
 		$scope.annonce = data.data[0];
+		$scope.url = $scope.annonce.images[0].imgUrl;
 		var req2 = {
 				method: 'POST', 
 				url: '/rest/user/getUserByID/'+data.data[0].idUser
