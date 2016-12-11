@@ -6,13 +6,13 @@
 					<label> <b>Nom</b> </label> 
 			<input type="text" ng-model="user.firstname" placeholder="Entrez votre nom" class="inputEamil"> 
 					<label> <b>Pr√©noms</b> </label> 
-			<input type="text" ng-model="user.lastname" placeholder="Entrez votre PrÈnom" class="inputEamil"> 
+			<input type="text" ng-model="user.lastname" placeholder="Entrez votre Pr√©nom" class="inputEamil"> 
 			<label> <b>Email</b> </label> 
 			<input type="text" ng-model="user.email" placeholder="Entrez votre email" class="inputEamil"> 
 			<label>
 					<b>Telephone</b>
 			</label> 
-			<input type="text" ng-model="user.telephone" placeholder="Entrez votre numÈro de tÈlÈphone" class="inputUserName">
+			<input type="text" ng-model="user.telephone" placeholder="Entrez votre num√©ro de t√©l√©phone" class="inputUserName">
 			<label>
 					<b>Nom d'utilisateur</b>
 			</label> 
@@ -27,10 +27,10 @@
 		<input type="button" id="emailregistbutton" ng-click="update(user)" name="submit" value="s'enregister">
 					
 					<label ng-show="status == 'failed'">
-						<b style = 'color : red'>Nom d'utilisateur dÈj‡ utilisÈ</b>
+						<b style = 'color : red'>Nom d'utilisateur d√©j√† utilis√©</b>
 					</label> 
 					<label ng-show="status == 'failedServeur'">
-						<b style = 'color : red'>ProbËme de communication avec le serveur</b>
+						<b style = 'color : red'>Probl√®me de communication avec le serveur</b>
 					</label> 
 					
 		</div>
