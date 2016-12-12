@@ -20,9 +20,7 @@ input[type=text],input[type=password]{
 .registbody{
 	padding: 16px;
 }
-.form{
-	width: 50%;
-}
+
 .logo{
 	position:absolute;
 	left:700px;
