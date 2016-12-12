@@ -25,8 +25,8 @@
 			<tr class="annonces" data-ng-repeat="annonce in annonces | filter:annonce_title" data-ng-click="showAnnonce(annonce)">
 				<td class='col-sm-4 col-xs-12 annonce_image'><img ng-src="{{annonce.images[0].imgUrl}}" width='80%'/></td>
 				<td class='col-sm-5 col-xs-5' style='margin-left:40px; margin-bottom: 10px'>
-					<h2><a href='' class='annonce_title'>{{annonce.titre}}</a></h2>
-					<div>Titre : {{annonce.title}}</div>
+					<!-- <h2><a href='' class='annonce_title'>{{annonce.titre}}</a></h2> -->
+					<div><h2>Titre : {{annonce.title}}</h2></div>
 					<div>Type : {{annonce.type}}</div>
 					<div>Vendeur : {{annonce.idUser}}</div>
 					<div>Evaluation du vendeur :</div>
