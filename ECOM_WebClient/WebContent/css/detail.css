@@ -49,25 +49,15 @@ a{
 	cursor:pointer;
 	border:none;
 	background:transparent;
-}
-a{
 	touch-action:manipulation;
-}
-a{
 	text-decoration:none;
-}
-a{
 	touch-action:manipulation;
-}
-a{
 	background color:transparent;
 }
 *{
 	box-sizing:inherit;
 }
-body {
-	background:#474747;
-}
+
 html,body {
 	min-width:320px;
 }
@@ -77,25 +67,17 @@ body {
 	color:#1a1a1a;
 	font-family:"OpenSans",sans-serif";
 	line-height:1.5;
-}
-body {
-	margin:0
-}
-body {
+	margin:0;
 	display:block;
+	background:#474747;
 }
+
 html {
 	font-size:62.5%;
 	font-size:calc(1em * 0.625);
-}
-html{
 	font-family:sans-serif;
 	-ms-text-size-adjust:100%;
-}
-html{
 	box-sizing:border-box;
-}
-html{
 	font-family:sans-serif;
 }
 .content-center{
