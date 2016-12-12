@@ -1,12 +1,12 @@
 
 <main class="col-xs-12 main_content" ng-controller="NewAdController">
+	<div class="content">
 	<h1 id="main_title">Déposer une annonce</h1> 
-
 	<form>
 	 	<div class="container"> 
 	 		<div class="newAd_line">
 				<label class="col-sm-12"><b>Titre de l'annonce *</b></label>
-				<input class="newAd_default" ng_model="product.titre" type="text" name="title" required>
+				<input class="newAd_default" ng_model="product.titre" type="text" name="title" style="width:60%" required>
 			</div>
 			<div class="newAd_line">
 				<label class="col-sm-12"><b>Catégorie *</b></label>
@@ -39,4 +39,5 @@
 				<input class="validate" ng-click="startUpload(product)" type="submit" name="validate">
 			</div>  			
 	</form>
+	</div>
 </main>
