@@ -44,7 +44,7 @@ scotchApp.config(function($routeProvider) {
 });
 //create the controller and inject Angular's $scope
 scotchApp.controller('homeController', ['$scope','$http','$location',function ($scope,$http,$location) {
-	$location.path('/offres');
+//	$location.path('/offres');
 }]);
 //create the controller and inject Angular's $scope
 scotchApp.controller('MainCtrl', ['$scope','$http','$location',function ($scope,$http,$location) {
@@ -225,10 +225,22 @@ scotchApp.controller('NewAdController', function($scope, $http,$location,$cookie
 	};
 });
 
-scotchApp.controller('LoginController', function($scope) {
+scotchApp.controller('LoginController', function($scope,$http) {
 
-	$scope.connexion = function(){
+	$scope.connexion = function(user){
+		
+		var req = {
+				method: 'POST',
+				url: '/rest/user/connexion/'+user.username+'/'+user.password
+		};
 
+		$http(req).then(function (data, status, headers, config) {
+			// success function
+			console.log(data);
+		}, function (data, status, headers, config) {   
+			//alert( "failure message: " + JSON.stringify({data: data}));
+			toastr.error("failure message: " + JSON.stringify({data: data}));
+		});
 	};
 });
 

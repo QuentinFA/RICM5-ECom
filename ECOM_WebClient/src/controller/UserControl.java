@@ -258,12 +258,12 @@ public class UserControl {
 			notes = "Permet l'authentification des utilisateurs"
 			)
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
-	@Path("/check")
-	public Response check(
+	@Path("/connexion/{name}/{password}")
+	public HttpServletResponse Connexion(
 			@Context HttpServletResponse response,
 			@Context HttpServletRequest request,
-			@FormParam("name") String name,
-			@FormParam("password") String password) throws URISyntaxException {
+			@PathParam("name") String name,
+			@PathParam("password") String password) throws URISyntaxException, IOException {
 
 		User user = userfacade.find(name);
 		if(user != null){
@@ -276,16 +276,47 @@ public class UserControl {
 				loginCookie.setMaxAge(30*60);
 				response.addCookie(loginCookie);
 				//response.sendRedirect("#");
-				return Response.status(Response.Status.ACCEPTED).build();
+				
+			//	return Response.status(Response.Status.ACCEPTED).build();
 			}else{
-				return Response.status(Response.Status.FORBIDDEN).build();
+			//	return Response.status(Response.Status.FORBIDDEN).build();
 			}
 		} else{
-			return Response.status(Response.Status.FORBIDDEN).build();
+		//	return Response.status(Response.Status.FORBIDDEN).build();
 		}
-
+		return response;
 	}
+	@POST
+	@ApiOperation(
+			value = "Permet l'authentification des utilisateurs", 
+			notes = "Permet l'authentification des utilisateurs"
+			)
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+	@Path("/deconnexion")
+	public Response Deconnecxion(
+			@Context HttpServletResponse response,
+			@Context HttpServletRequest request) throws URISyntaxException, IOException {
 
+    	response.setContentType("text/html");
+    	Cookie loginCookie = null;
+    	Cookie[] cookies = request.getCookies();
+    	if(cookies != null){
+    	for(Cookie cookie : cookies){
+    		if(cookie.getName().equals("user")){
+    			loginCookie = cookie;
+    			break;
+    		}
+    	}
+    	}
+    	if(loginCookie != null){
+    		loginCookie.setMaxAge(0);
+        	response.addCookie(loginCookie);
+    	}
+    	response.sendRedirect("#");
+    	return Response.status(Response.Status.ACCEPTED).build();
+    }
+
+	
 	@GET
 	@ApiOperation(
 			value = "Retourne l'utilisateur courant", 
