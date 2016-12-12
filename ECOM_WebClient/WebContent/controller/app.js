@@ -63,8 +63,9 @@ scotchApp.controller('MainCtrl', ['$scope','$http','$location','$cookies',functi
 		$http(req).then(function (data, status, headers, config) {
 			// success function
 			if(data.status == 201){
-				$location.path('/offres');
+				
 				toastr.success("Annonce supprimée avec success");
+				location.reload(); 
 				
 			}
 			else{
