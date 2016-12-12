@@ -20,7 +20,7 @@ input[type=text], input[type=password] {
     border: none;
     cursor: pointer;
     width: 20%;
-        -webkit-appearance: button;
+    -webkit-appearance: button;
     -moz-appearance: button;
     text-align: center;
 }
