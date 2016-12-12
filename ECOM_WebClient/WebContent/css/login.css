@@ -12,7 +12,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-#btn_request {
+#btn_request,#btn_regist {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -20,17 +20,11 @@ input[type=text], input[type=password] {
     border: none;
     cursor: pointer;
     width: 20%;
+        -webkit-appearance: button;
+    -moz-appearance: button;
+    text-align: center;
 }
 
-#btn_regist{
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 20%;
-}
 
 
 
