@@ -28,6 +28,7 @@
 	border: 1px solid white;
 	border-radius: 4px;
 	float: right;
+	padding: 5px 0;
 }
 
 #nav #head_login:hover, #nav #head_logout:hover{
