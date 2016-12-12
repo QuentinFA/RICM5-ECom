@@ -23,7 +23,7 @@
 		<h1 id="main_title"></h1>
 		<table id="anonce_list">
 
-	<tr class="annonces" data-ng-repeat="annonce in annonces | filter:annonce_title" data-ng-click="showAnnonce(annonce)">
+	<tr class="annonces" data-ng-repeat="annonce in annonces | filter:annonce_title" >
 				<td data-ng-click="showAnnonce(annonce)" class='col-sm-4 col-xs-12 annonce_image'><img ng-src="{{annonce.images[0].imgUrl}}" width='80%'/></td>
 				<td data-ng-click="showAnnonce(annonce)" class='col-sm-5 col-xs-5' style='margin-left:40px; margin-bottom: 10px'>
 					<!-- <h2><a href='' class='annonce_title'>{{annonce.titre}}</a></h2> -->
@@ -39,8 +39,8 @@
 					</div>
 					
 				</td>
-				<td ng-click="deleteAnnonce(annonce)" ng-if="userOffres == annonce.idUser" class='col-sm-1 col-xs-5 last_td'>
-					<div><button  class="close">&times;</button></div>
+				<td  ng-if="userOffres == annonce.idUser" class='col-sm-1 col-xs-5 last_td'>
+					<div><button ng-click="deleteAnnonce(annonce)" class="close">&times;</button></div>
 				</td>
 				
 			</tr>
