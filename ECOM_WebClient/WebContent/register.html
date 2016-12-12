@@ -20,19 +20,19 @@
 			 	<label ng-show="user.password != user.confirm">
 						<b style = 'color : red'>Les mots de passes ne sont pas identiques</b>
 				</label> 
-			 <label>
-						<b>Mot de passe</b><br/>
-	</label> <input required type="password" ng-model="user.password" placeholder="Entrez votre mot de passe"> <label> <b>Confirmer votre mot de passe</b></label> 
-			<input required type="password" ng-model="user.confirm" placeholder="confirmez votre mot de passe"> 
-		<input type="button" id="emailregistbutton" ng-click="update(user)" name="submit" value="s'enregister">
-					
+			<label>
+				<b>Mot de passe</b><br/>
+			</label> 
+				<input required type="password" ng-model="user.password" placeholder="Entrez votre mot de passe"> 
+					<label> <b>Confirmer votre mot de passe</b></label> 
+				<input required type="password" ng-model="user.confirm" placeholder="confirmez votre mot de passe"> 
+				<input type="button" id="emailregistbutton" ng-click="update(user)" name="submit" value="s'enregister">
 					<label ng-show="status == 'failed'">
 						<b style = 'color : red'>Nom d'utilisateur déjà utilisé</b>
 					</label> 
 					<label ng-show="status == 'failedServeur'">
 						<b style = 'color : red'>Problème de communication avec le serveur</b>
-					</label> 
-					
+					</label> 	
 		</div>
 	</form>
 </main>
