@@ -47,13 +47,33 @@ scotchApp.controller('homeController', ['$scope','$http','$location',function ($
 //	$location.path('/offres');
 }]);
 //create the controller and inject Angular's $scope
-scotchApp.controller('MainCtrl', ['$scope','$http','$location',function ($scope,$http,$location) {
+scotchApp.controller('MainCtrl', ['$scope','$http','$location','$cookies',function ($scope,$http,$location,$cookies) {
 	$scope.showAnnonce = function(annonce) {
 		$location.path('/detailAdvert/' + annonce.idProduct);
 		//$window.location.href = '/detailAdvert/' + client.idProduct;
 		// console.log(annonce.idProduct);
 	};
+	$scope.userOffres = $cookies.user;
+	$scope.deleteAnnonce = function(annonce){
+		var req = {
+				method: 'POST',
+				url: '/rest/product/deleteProductById/'+annonce.idProduct
+		};
 
+		$http(req).then(function (data, status, headers, config) {
+			// success function
+			if(data.status == 201){
+				$location.path('/offres');
+				toastr.success("Annonce supprimée avec success");
+				
+			}
+			else{
+				toastr.error("Impossible de supprimer l'annonce");
+			}
+		}, function (data, status, headers, config) {   
+			toastr.error("Impossible de supprimer l'annonce");
+		});
+	};
 	$scope.annonces = [];
 	$scope.nbAnnonces = 4;
 	$scope.nbPages = $scope.nbAnnonces /2;

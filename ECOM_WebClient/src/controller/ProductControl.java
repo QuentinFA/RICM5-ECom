@@ -254,7 +254,20 @@ public class ProductControl {
 		return Response.status(Response.Status.CREATED).build();
 	}
 
+	@POST 
+	@ApiOperation(
+			value = "Modifier un nouveau produit",
+			notes = "Modifier un nouveau produit"
+			)
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
+	@Path("/deleteProductById/{id}")
+	public Response deleteProductbyId(@PathParam("id") int id) {
 
+		List<Product> nouveau = (List<Product>) this.productfacade.findProductByID(id);
+		this.productfacade.remove((Product) nouveau.get(0));   
+		return Response.status(Response.Status.CREATED).build();
+	}
 
 	public void upLoadImage(File file, String key){
 		System.out.println("uploadimage");
