@@ -39,8 +39,8 @@
 					</div>
 					
 				</td>
-				<td ng-click="deleteAnnonce(annonce)" ng-if="userOffres == annonce.idUser" class='col-sm-1 col-xs-5 last_td'>
-					<div><button  class="close">&times;</button></div>
+				<td  ng-if="userOffres == annonce.idUser" class='col-sm-1 col-xs-5 last_td'>
+					<div><button ng-click="deleteAnnonce(annonce)" class="close">&times;</button></div>
 				</td>
 				
 			</tr>
