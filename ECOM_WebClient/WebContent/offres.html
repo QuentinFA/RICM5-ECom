@@ -33,14 +33,14 @@
 					<div>Evaluation du vendeur :</div>
 					<span class='stars'>{{annonce.evaluation}}</span>
 				</td>
-				<td data-ng-click="showAnnonce(annonce)" class='col-sm-1 col-xs-5 last_td'>
+				<td  class='col-sm-1 col-xs-5 last_td'>
 					<div><h2 class='annonce_price'>{{annonce.price}}€</h2></div>
 					<div class="test">
 					</div>
 					
 				</td>
-				<td class='col-sm-1 col-xs-5 last_td'>
-					<div><button ng-click="deleteAnnonce(annonce)" class="close">&times;</button></div>
+				<td ng-click="deleteAnnonce(annonce)" ng-if="userOffres == annonce.idUser" class='col-sm-1 col-xs-5 last_td'>
+					<div><button  class="close">&times;</button></div>
 				</td>
 				
 			</tr>
