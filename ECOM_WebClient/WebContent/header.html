@@ -6,25 +6,7 @@
 			onclick="location.href = 'login.html'";>Connexion</button>
 		<button id="head_logout" class="col-xs-5 col-sm-2"
 			onclick="location.href = 'LogoutServlet'";>Deconnexion</button>
-		<script type="text/javascript">
-		var allcookies = document.cookie;
-		// Get all the cookies pairs in an array
-		var name = "";
-		var value = "";
-		name = allcookies.split('=')[0];
-		value = allcookies.split('=')[1];
-		var login_button = document.getElementById('head_login');
-		var logout_button = document.getElementById('head_logout');
-		
-		console.log(value);
-		if (value == "") {
-			login_button.style.visibility = 'visible';
-			logout_button.style.visibility = 'hidden';
-		} else {
-			login_button.style.visibility = 'hidden';
-			logout_button.style.visibility = 'visible';
-		}
-		</script>
+
 		<section class="head_ul col-xs-12 col-sm-7">
 			<ul class="head_menu">
 				<li><a href="http://localhost/RECOM5/">Accueil</a></li>
